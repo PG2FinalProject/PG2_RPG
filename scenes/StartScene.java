@@ -21,7 +21,7 @@ public class StartScene {
     private Parent root;
     
     @FXML
-    public void newGame(ActionEvent e) throws IOException
+    public void newGameButtom(ActionEvent e) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("NamingScene.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -31,7 +31,7 @@ public class StartScene {
     }
     
     @FXML
-    public void exitGame(ActionEvent e) throws IOException
+    public void exitButtom(ActionEvent e) throws IOException
     {
         Platform.exit();
     }
