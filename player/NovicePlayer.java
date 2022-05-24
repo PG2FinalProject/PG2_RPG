@@ -1,50 +1,50 @@
 package player;
 
-public abstract class NovicePlayer{
+public class NovicePlayer{
 
+    //Some value related to the level
+    protected int levelNum;
+	protected int strNum;
+    protected int intNum;
+    protected int dexNum;
+    protected int defNum;
+	protected int maxHPNum;
+	protected int maxMPNum;
+	protected int lvupExp;
+	protected int lastlvupExp;
 
-    protected int level;
-	protected int attack;
-	protected int defense;
-	protected int max_hp;
-	protected int max_mp;
-	protected int lvup_exp;
-	protected int lastlvup_exp;
-
-    
-	private String name;
+	private String playerName;
 	private int hp;
 	private int mp;
 	private int exp;
-	private int money;
-    private int backpack_weight;
 
+	//private int money;
     /*
 	private Item* backpack[6] = {NULL}; 
 	private WeaponItem* weapon;
 	private ArmorItem* armor;
     */
-	
-    public final int backpack_weight_limit;
-	public final int backpack_slot_limit;
-    
-    public NovicePlayer(){
-        backpack_weight_limit = 100;
-        backpack_slot_limit = 6;
-        backpack_weight = 0;
-    }
 
-    public NovicePlayer(int l, String n){
-        backpack_weight_limit = 100;
-        backpack_slot_limit = 6;
-        setLevel(l);
-	    setName(n);
+	public final int backpackSlotLimit = 6;
+
+    public NovicePlayer() {
+        setLevel(1);
         setHP(getMaxHP());
         setMP(getMaxMP());
-        setExp(lastlvup_exp);
-        setMoney(0);
-        backpack_weight = 0;  
+        setExp(lastlvupExp);
+        //setMoney(0);
     }
+    
+    public NovicePlayer(String name) {
+        setLevel(1);
+	    setName(name);
+        setHP(getMaxHP());
+        setMP(getMaxMP());
+        setExp(lastlvupExp);
+        //setMoney(0);
+    }
+
+    
 
     /*
     copy constructor but I remeber that java can copy directly using "="
@@ -60,89 +60,114 @@ public abstract class NovicePlayer{
     }
     */
 
-    public final String getName(){
-        return name;
+    public String getName(){
+        return this.getName();
     }
 
-    public void setName(String n) {
-        name = n;
+    public void setName(String name) {
+        this.playerName = name;
     }
 
-    public final int getHP(){
-        return hp;
+    public int getHP(){
+        return this.hp;
     }
     
-    public void setHP(int h) {
-        if (h <= 0) { hp = 0; }
-        else if (h >= getMaxHP()) { hp = getMaxHP(); }
-        else { hp = h; }
+    public void setHP(int hp) {
+        if (hp <= 0) { 
+            this.hp = 0; 
+        }
+        else if (hp >= getMaxHP()) {
+            this.hp = getMaxHP(); 
+        }
+        else { 
+            this.hp = hp; 
+        }
     }
 
-    public final int getMP(){
-        return mp;
+    public int getMP(){
+        return this.mp;
     }
     
-    public void setMP(int m) {
-        if (m <= 0) { mp = 0; }
-        else if (m > getMaxHP()) { mp = getMaxMP(); }
-        else { mp = m; }
+    public void setMP(int mp) {
+        if (mp <= 0) { 
+            this.mp = 0; 
+        }
+        else if (mp > getMaxHP()) { 
+            this.mp = getMaxMP(); 
+        }
+        else { 
+            this.mp = mp; 
+        }
     }
 
     public final int getExp(){
-        return exp;
+        return this.exp;
     }
-    
-    public final int getMoney(){
+    /*
+    public int getMoney(){
         return money;
     }
 
     public void setMoney(int m) {
         money = (0 <= m) ? m : 0;
-    }
+    }*/
     
-    public void setExp(int e) {
-        if (e <= lastlvup_exp) {
-            exp = lastlvup_exp;
+    public void setExp(int exp) {
+        if (exp <= lastlvupExp) {
+            this.exp = lastlvupExp;
         }
-        else { exp = e; }
+        else { 
+            this.exp = exp; 
+        }
     }
 
-    public final int getLevel(){
-        return level;
+    public int getLevel(){
+        return this.levelNum;
     }
 
     public void setLevel(int l) {
-        level = (1 <= l) ? l : 1;
-        attack = 20 + 5 * getLevel();
-        defense = 20 + 5 * getLevel();
-        max_hp = 100 + 10 * getLevel();
-        max_mp = 40 + 5 * getLevel();
-        lvup_exp = (int) Math.ceil(Math.pow(10, Math.log(getLevel() + 1)/Math.log(2)));
-        lastlvup_exp = (int) Math.ceil(Math.pow(10, Math.log(getLevel())/Math.log(2)));
+        this.levelNum = l;
+        this.strNum = 20 + 5 * l;
+        this.intNum = 20 + 5 * l;
+        this.dexNum = 20 + 5 * l;
+        this.defNum = 20 + 5 * l;
+        this.maxHPNum = 100 + 10 * l;
+        this.maxMPNum = 40 + 5 * l;
+        this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel() + 1)/Math.log(2)));
+        this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel())/Math.log(2)));
     }
 
-    public final int getAttack(){
-        return attack;
-    }
-    
-    public final int getDefense(){
-        return defense;
-    }
-    
-    public final int getMaxHP(){
-        return max_hp;
-    }
-    
-    public final int getMaxMP(){
-        return max_mp;
+    public int getStrNum(){
+        return this.strNum;
     }
 
-    public final int getLvupExp(){
-        return lvup_exp;
+    public int getIntNum(){
+        return this.intNum;
+    }
+
+    public int getDexNum(){
+        return this.dexNum;
     }
     
+    public int getDefNum(){
+        return this.defNum;
+    }
+    
+    public int getMaxHP(){
+        return maxHPNum;
+    }
+    
+    public int getMaxMP(){
+        return maxMPNum;
+    }
+
+    public int getLvupExp(){
+        return lvupExp;
+    }
+
+    /*
     public abstract void specialSkill();
-
+    */
     /*
     public final WeaponItem getweapon(){
         return weapon;

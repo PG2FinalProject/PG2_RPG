@@ -135,14 +135,16 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="532.0" layoutY="248.0" prefHeight="18.0" prefWidth="89.0" text="STR:" />
-            <Label layoutX="532.0" layoutY="281.0" prefHeight="18.0" prefWidth="89.0" text="INT:" />
-            <Label layoutX="532.0" layoutY="317.0" prefHeight="18.0" prefWidth="89.0" text="DEX:" />
-            <Label fx:id="playerBattleName" layoutX="57.0" layoutY="49.0" visible="false" />
+            <Label layoutX="530.0" layoutY="230.0" prefHeight="18.0" prefWidth="89.0" text="STR:" />
+            <Label layoutX="530.0" layoutY="263.0" prefHeight="18.0" prefWidth="89.0" text="INT:" />
+            <Label layoutX="530.0" layoutY="299.0" prefHeight="18.0" prefWidth="89.0" text="DEX:" />
+            <Label fx:id="playerBattleName" layoutX="57.0" layoutY="49.0" />
             <Label fx:id="monsterBattleName1" layoutX="458.0" visible="false" />
             <Label fx:id="monsterBattleName2" layoutX="458.0" layoutY="102.0" visible="false" />
             <ProgressBar layoutX="484.0" layoutY="109.0" prefHeight="9.0" prefWidth="46.0" progress="0.0" visible="false" />
             <ProgressBar layoutX="484.0" layoutY="9.0" prefHeight="9.0" prefWidth="46.0" progress="0.0" visible="false" />
+            <Label layoutX="530.0" layoutY="335.0" prefHeight="18.0" prefWidth="89.0" text="DEF:" />
+            <Label layoutX="88.0" layoutY="47.0" prefHeight="18.0" prefWidth="34.0" text="LV:" />
       </children>
     </AnchorPane>
   </children>

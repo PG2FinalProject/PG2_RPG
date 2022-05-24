@@ -9,13 +9,17 @@ public class NamingScene {
 
     @FXML
     private TextField namingTextField;
-    private String playerName;
+    private static String playerNameNaming;
 
     @FXML
     public void submitNamingBottom(ActionEvent e) throws IOException
     {
-        playerName = namingTextField.getText();
-        System.out.println(playerName);
+        playerNameNaming = namingTextField.getText();
+        
+    }
+
+    public String getplayerNameNaming() {
+        return this.playerNameNaming;
     }
 
 }
