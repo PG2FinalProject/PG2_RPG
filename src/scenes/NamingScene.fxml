@@ -39,6 +39,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -92,7 +94,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="292.0" layoutY="121.0" mnemonicParsing="false" onAction="#submitNamingBottom" text="Submit" />
+            <Button layoutX="292.0" layoutY="121.0" mnemonicParsing="false" onAction="#submitNamingBotton" text="Submit" />
+            <ImageView fitHeight="181.0" fitWidth="247.0" layoutX="229.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../playerPictures/NewbieStandByLeft.gif" />
+               </image>
+            </ImageView>
       </children>
     </AnchorPane>
   </children>

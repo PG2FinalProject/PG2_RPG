@@ -92,59 +92,72 @@
             <ImageView fx:id="monsterBattleImageView1" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="monsterBattleImageView2" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e3e3" height="168.0" layoutY="206.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
-            <Label layoutX="9.0" layoutY="217.0" prefHeight="147.0" prefWidth="622.0" />
-            <Button layoutX="26.0" layoutY="230.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="攻擊" visible="false">
+            <Label fx:id="dialogue" alignment="TOP_LEFT" layoutX="9.0" layoutY="217.0" onMouseClicked="#closeDialogue" prefHeight="147.0" prefWidth="622.0">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Button fx:id="attackButton" layoutX="26.0" layoutY="230.0" mnemonicParsing="false" onAction="#attackButtonAction" prefHeight="54.0" prefWidth="122.0" text="攻擊" visible="false">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="26.0" layoutY="291.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="道具" visible="false">
+            <Button fx:id="itemButton" layoutX="26.0" layoutY="291.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="道具" visible="false">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="162.0" layoutY="230.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="魔法" visible="false">
+            <Button fx:id="magicButton" layoutX="162.0" layoutY="230.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="魔法" visible="false">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="162.0" layoutY="291.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="逃跑" visible="false">
+            <Button fx:id="retrieveButton" layoutX="162.0" layoutY="291.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="逃跑" visible="false">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <ProgressBar layoutX="320.0" layoutY="265.0" prefWidth="200.0" progress="0.0" />
-            <ProgressBar layoutX="320.0" layoutY="326.0" prefWidth="200.0" progress="0.0" />
-            <Label layoutX="320.0" layoutY="238.0" prefHeight="26.0" prefWidth="26.0" text="HP">
+            <ProgressBar fx:id="hpBar" layoutX="320.0" layoutY="265.0" prefWidth="200.0" progress="0.0" visible="false" />
+            <ProgressBar fx:id="mpBar" layoutX="320.0" layoutY="326.0" prefWidth="200.0" progress="0.0" visible="false" />
+            <Label fx:id="hpLabel" layoutX="320.0" layoutY="238.0" prefHeight="26.0" prefWidth="26.0" text="HP" visible="false">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="320.0" layoutY="299.0" prefHeight="26.0" prefWidth="26.0" text="MP">
+            <Label fx:id="mpLabel" layoutX="320.0" layoutY="299.0" prefHeight="26.0" prefWidth="26.0" text="MP" visible="false">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="493.0" layoutY="238.0" prefHeight="26.0" prefWidth="26.0" text="/">
+            <Label fx:id="hpValueLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="448.0" layoutY="244.0" prefHeight="20.0" prefWidth="71.0" text="/" visible="false">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="493.0" layoutY="299.0" prefHeight="26.0" prefWidth="26.0" text="/">
+            <Label fx:id="mpValueLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="448.0" layoutY="306.0" prefHeight="20.0" prefWidth="71.0" text="/" visible="false">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="530.0" layoutY="230.0" prefHeight="18.0" prefWidth="89.0" text="STR:" />
-            <Label layoutX="530.0" layoutY="263.0" prefHeight="18.0" prefWidth="89.0" text="INT:" />
-            <Label layoutX="530.0" layoutY="299.0" prefHeight="18.0" prefWidth="89.0" text="DEX:" />
+            <Label fx:id="strLabel" layoutX="530.0" layoutY="230.0" prefHeight="18.0" prefWidth="89.0" text="STR:" visible="false" />
+            <Label fx:id="intLabel" layoutX="530.0" layoutY="263.0" prefHeight="18.0" prefWidth="89.0" text="INT:" visible="false" />
+            <Label fx:id="dexLabel" layoutX="530.0" layoutY="299.0" prefHeight="18.0" prefWidth="89.0" text="DEX:" visible="false" />
             <Label fx:id="playerBattleName" layoutX="57.0" layoutY="49.0" />
-            <Label fx:id="monsterBattleName1" layoutX="458.0" visible="false" />
-            <Label fx:id="monsterBattleName2" layoutX="458.0" layoutY="102.0" visible="false" />
+            <Label fx:id="monsterBattleName1" layoutX="458.0" />
+            <Label fx:id="monsterBattleName2" layoutX="458.0" layoutY="102.0" />
             <ProgressBar layoutX="484.0" layoutY="109.0" prefHeight="9.0" prefWidth="46.0" progress="0.0" visible="false" />
             <ProgressBar layoutX="484.0" layoutY="9.0" prefHeight="9.0" prefWidth="46.0" progress="0.0" visible="false" />
-            <Label layoutX="530.0" layoutY="335.0" prefHeight="18.0" prefWidth="89.0" text="DEF:" />
-            <Label layoutX="88.0" layoutY="47.0" prefHeight="18.0" prefWidth="34.0" text="LV:" />
+            <Label fx:id="defLabel" layoutX="530.0" layoutY="335.0" prefHeight="18.0" prefWidth="89.0" text="DEF:" visible="false" />
+            <Label alignment="CENTER_RIGHT" layoutX="88.0" layoutY="47.0" prefHeight="18.0" prefWidth="34.0" text="LV:" />
+            <Button fx:id="monsterButton1" layoutX="26.0" layoutY="260.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="怪物1" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="monsterButton2" layoutX="162.0" layoutY="260.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="怪物2" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
       </children>
     </AnchorPane>
   </children>

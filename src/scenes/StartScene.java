@@ -19,7 +19,7 @@ public class StartScene {
     private Parent root;
     
     @FXML
-    public void newGameButtom(ActionEvent event) throws IOException
+    public void newGameButton(ActionEvent event) throws IOException
     {
         root = FXMLLoader.load(getClass().getResource("NamingScene.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

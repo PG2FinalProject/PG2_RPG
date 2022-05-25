@@ -95,7 +95,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="111.0" layoutY="175.0" mnemonicParsing="false" onAction="#newGameButtom" text="New Game" />
+            <Button layoutX="111.0" layoutY="175.0" mnemonicParsing="false" onAction="#newGameButton" text="New Game" />
             <Button layoutX="132.0" layoutY="257.0" mnemonicParsing="false" onAction="#exitButtom" text="Exit" />
       </children>
     </AnchorPane>
