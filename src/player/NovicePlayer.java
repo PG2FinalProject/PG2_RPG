@@ -26,14 +26,6 @@ public class NovicePlayer{
     */
 
 	public final int backpackSlotLimit = 6;
-
-    public NovicePlayer() {
-        setLevel(1);
-        setHP(getMaxHP());
-        setMP(getMaxMP());
-        setExp(lastlvupExp);
-        //setMoney(0);
-    }
     
     public NovicePlayer(String name) {
         setLevel(1);
@@ -61,7 +53,7 @@ public class NovicePlayer{
     */
 
     public String getName(){
-        return this.getName();
+        return this.playerName;
     }
 
     public void setName(String name) {

@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 
+import Main.RPG;
+
 public class BattleScene {
 
     @FXML
@@ -28,7 +30,7 @@ public class BattleScene {
         //Player Initialization
         playerBattleImage = new Image(getClass().getResourceAsStream("../playerPictures/ShieldStandByRight.gif"));
         playerBattleImageView.setImage(playerBattleImage);
-        //playerBattleName.setText("");
+        //playerBattleName.setText(RPG);
         //Monster1 Initialization
         //Monster2 Initialization
     }
