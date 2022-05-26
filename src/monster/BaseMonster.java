@@ -5,41 +5,66 @@ public class BaseMonster {
     private int hp;
 	private int mp;
 
-    public final String name;
-	public final int attack; 
-	public final int defense;  
-	public final int exp; 
-	public final int money; 
-	public final int max_hp; 
-	public final int max_mp;
+	private final int attack; 
+	private final int def;  
+	private final int exp; 
+	private final int maxHP; 
+	private final int maxMP;
+    //private final int money = 10;
 
-    public BaseMonster(String n, int a, int d, int e, int m, int mh, int mm) {
-        name = n;
-        attack = a;
-        defense = d;
-        exp = e;
-        money = m;
-        max_hp = mh;
-        max_mp = mm;
+    public BaseMonster(int attack, int def, int exp, int maxHP, int maxMP) {
+        this.attack = attack;
+        this.def = def;
+        this.exp = exp;
+        this.maxHP = maxHP;
+        this.maxMP = maxMP;
     }
 
-    public void setHP(int h) {
-        if (h <= 0) { hp = 0; }
-        else if (h >= max_hp) { hp = max_hp; }
-        else { hp = h; }
+    public void setHP(int hp) {
+        if (hp <= 0) { 
+            this.hp = 0; 
+        }
+        else if (hp >= maxHP) { 
+            this.hp = this.maxHP; 
+        }
+        else { 
+            this.hp = hp; 
+        }
     }
     
-    public final int getHP(){
-        return hp;
+    public int getHP(){
+        return this.hp;
     }
     
-    public void setMP(int m) {
-        if (m <= 0) { mp = 0; }
-        else if (m >= max_mp) { mp = max_mp; }
-        else { mp = m; }
+    public void setMP(int mp) {
+        if (mp <= 0) { 
+            this.mp = 0; 
+        }
+        else if (mp >= maxMP) { 
+            this.mp = this.maxMP; 
+        }
+        else { 
+            this.mp = mp; 
+        }
+    }
+
+    public int getAttack(){
+        return this.attack;
+    }
+
+    public int getDef(){
+        return this.def;
+    }
+
+    public int getExp(){
+        return this.exp;
     }
     
-    public final int getMP(){
-        return mp;
+    public int getMaxHP(){
+        return this.hp;
+    }
+
+    public int getMaxMP(){
+        return this.mp;
     }
 }

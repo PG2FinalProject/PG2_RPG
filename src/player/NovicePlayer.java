@@ -1,5 +1,7 @@
 package player;
 
+import javafx.scene.image.Image;
+
 public class NovicePlayer{
 
     //Some value related to the level
@@ -13,10 +15,15 @@ public class NovicePlayer{
 	protected int lvupExp;
 	protected int lastlvupExp;
 
+    //Some value related to the player
 	private String playerName;
 	private int hp;
 	private int mp;
 	private int exp;
+
+    //Pictures of the player
+    protected Image playerImageStandByRight = new Image(getClass().getResourceAsStream("../playerPictures/NoviceStandByRight.gif"));
+    protected Image playerImageStandByLeft = new Image(getClass().getResourceAsStream("../playerPictures/NoviceStandByLeft.gif"));
 
 	//private int money;
     /*
@@ -30,9 +37,10 @@ public class NovicePlayer{
     public NovicePlayer(String name) {
         setLevel(1);
 	    setName(name);
-        setHP(getMaxHP());
-        setMP(getMaxMP());
+        setHP(getMaxHPNum());
+        setMP(getMaxMPNum());
         setExp(lastlvupExp);
+        setImage();
         //setMoney(0);
     }
 
@@ -68,8 +76,8 @@ public class NovicePlayer{
         if (hp <= 0) { 
             this.hp = 0; 
         }
-        else if (hp >= getMaxHP()) {
-            this.hp = getMaxHP(); 
+        else if (hp >= getMaxHPNum()) {
+            this.hp = getMaxHPNum(); 
         }
         else { 
             this.hp = hp; 
@@ -84,8 +92,8 @@ public class NovicePlayer{
         if (mp <= 0) { 
             this.mp = 0; 
         }
-        else if (mp > getMaxHP()) { 
-            this.mp = getMaxMP(); 
+        else if (mp > getMaxHPNum()) { 
+            this.mp = getMaxMPNum(); 
         }
         else { 
             this.mp = mp; 
@@ -113,20 +121,20 @@ public class NovicePlayer{
         }
     }
 
-    public int getLevel(){
+    public int getLevelNum(){
         return this.levelNum;
     }
 
-    public void setLevel(int l) {
-        this.levelNum = l;
-        this.strNum = 20 + 5 * l;
-        this.intNum = 20 + 5 * l;
-        this.dexNum = 20 + 5 * l;
-        this.defNum = 20 + 5 * l;
-        this.maxHPNum = 100 + 10 * l;
-        this.maxMPNum = 40 + 5 * l;
-        this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel() + 1)/Math.log(2)));
-        this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel())/Math.log(2)));
+    public void setLevel(int level) {
+        this.levelNum = level;
+        this.strNum = 20 + 5 * level;
+        this.intNum = 20 + 5 * level;
+        this.dexNum = 20 + 5 * level;
+        this.defNum = 20 + 5 * level;
+        this.maxHPNum = 100 + 10 * level;
+        this.maxMPNum = 40 + 5 * level;
+        this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevelNum() + 1)/Math.log(2)));
+        this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevelNum())/Math.log(2)));
     }
 
     public int getStrNum(){
@@ -145,16 +153,29 @@ public class NovicePlayer{
         return this.defNum;
     }
     
-    public int getMaxHP(){
+    public int getMaxHPNum(){
         return maxHPNum;
     }
     
-    public int getMaxMP(){
+    public int getMaxMPNum(){
         return maxMPNum;
     }
 
     public int getLvupExp(){
         return lvupExp;
+    }
+
+    public void setImage(){
+        playerImageStandByRight = new Image(getClass().getResourceAsStream("../playerPictures/NoviceStandByRight.gif"));
+        playerImageStandByLeft = new Image(getClass().getResourceAsStream("../playerPictures/NoviceStandByLeft.gif"));
+    }
+
+    public Image getplayerImageStandByRight(){
+        return this.playerImageStandByRight;
+    }
+
+    public Image getplayerImageStandByLeft(){
+        return this.playerImageStandByLeft;
     }
 
     /*
