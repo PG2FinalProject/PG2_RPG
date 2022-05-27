@@ -7,22 +7,22 @@ public class MagicianPlayer extends NovicePlayer{
     public MagicianPlayer(String name) {
         super(name);
         setLevel();
-        setHP(getMaxHPNum());
-        setMP(getMaxMPNum());
+        setHP(getMaxHP());
+        setMP(getMaxMP());
         setExp(this.lastlvupExp);
         setImage();
     }
     
     public void setLevel() {
-        this.levelNum = this.getLevelNum();
-        this.strNum = 30 + 8 * getLevelNum();
-        this.intNum = 50 + 12 * getLevelNum();
-        this.dexNum = 20 + 8 * getLevelNum();
-        this.defNum = 20 + 7 * getLevelNum();
-        this.maxHPNum = 120 + 15 * getLevelNum();
-        this.maxMPNum = 100 + 15 * getLevelNum();
-        this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevelNum() + 1)/Math.log(2)));
-        this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevelNum())/Math.log(2)));
+        this.level = this.getLevel();
+        this.strNum = 30 + 8 * getLevel();
+        this.intNum = 50 + 12 * getLevel();
+        this.dexNum = 20 + 8 * getLevel();
+        this.defNum = 20 + 7 * getLevel();
+        this.maxHP = 120 + 15 * getLevel();
+        this.maxMP = 100 + 15 * getLevel();
+        this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel() + 1)/Math.log(2)));
+        this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel())/Math.log(2)));
     }
     
     /*

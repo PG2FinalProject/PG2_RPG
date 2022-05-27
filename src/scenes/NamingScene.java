@@ -43,4 +43,23 @@ public class NamingScene {
             e.printStackTrace();
         }
     }
+    /*
+    @FXML
+    public void submitNamingBotton(ActionEvent event) throws IOException
+    {
+        try{
+            RPG.player = new NovicePlayer(namingTextField.getText());
+            try{
+                root = FXMLLoader.load(getClass().getResource("/scenes/BattleScene.fxml"));
+                scene = new Scene(root);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 }

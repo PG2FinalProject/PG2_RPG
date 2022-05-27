@@ -88,14 +88,14 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <ImageView fx:id="playerBattleImageView" fitHeight="71.0" fitWidth="71.0" layoutX="52.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="monsterBattleImageView1" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="monsterBattleImageView2" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e3e3" height="168.0" layoutY="206.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
             <Label fx:id="dialogue" alignment="TOP_LEFT" layoutX="9.0" layoutY="217.0" onMouseClicked="#closeDialogue" prefHeight="147.0" prefWidth="622.0">
                <font>
                   <Font size="20.0" />
                </font></Label>
+            <ImageView fx:id="playerBattleImageView" fitHeight="71.0" fitWidth="71.0" layoutX="52.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="monsterBattleImageView1" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="monsterBattleImageView2" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="attackButton" layoutX="26.0" layoutY="230.0" mnemonicParsing="false" onAction="#attackButtonAction" prefHeight="54.0" prefWidth="122.0" text="攻擊" visible="false">
                <font>
                   <Font size="20.0" />
@@ -148,12 +148,17 @@
             <ProgressBar layoutX="484.0" layoutY="9.0" prefHeight="9.0" prefWidth="46.0" progress="0.0" visible="false" />
             <Label fx:id="defLabel" layoutX="530.0" layoutY="335.0" prefHeight="18.0" prefWidth="89.0" text="DEF:" visible="false" />
             <Label alignment="CENTER_RIGHT" layoutX="88.0" layoutY="47.0" prefHeight="18.0" prefWidth="34.0" text="LV:" />
-            <Button fx:id="monsterButton1" layoutX="26.0" layoutY="260.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="怪物1" visible="false">
+            <Button fx:id="monsterButton1" layoutX="26.0" layoutY="230.0" mnemonicParsing="false" onAction="#monsterButton1Action" prefHeight="54.0" prefWidth="122.0" text="怪物1" visible="false">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="monsterButton2" layoutX="162.0" layoutY="260.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="怪物2" visible="false">
+            <Button fx:id="monsterButton2" layoutX="162.0" layoutY="230.0" mnemonicParsing="false" onAction="#monsterButton2Action" prefHeight="54.0" prefWidth="122.0" text="怪物2" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="returnButton" layoutX="94.0" layoutY="291.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="54.0" prefWidth="122.0" text="返回" visible="false">
                <font>
                   <Font size="20.0" />
                </font>

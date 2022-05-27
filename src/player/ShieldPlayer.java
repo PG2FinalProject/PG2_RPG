@@ -7,23 +7,23 @@ public class ShieldPlayer extends NovicePlayer{
     public ShieldPlayer(String name) {
         super(name);
         setLevel();
-        setHP(getMaxHPNum());
-        setMP(getMaxMPNum());
+        setHP(getMaxHP());
+        setMP(getMaxMP());
         setExp(this.lastlvupExp);
         setImage();
     }
     
     
     public void setLevel() {
-        this.levelNum = this.getLevelNum();
-        this.strNum = 40 + 8 * getLevelNum();
-        this.intNum = 20 + 5 * getLevelNum();
-        this.dexNum = 20 + 4 * getLevelNum();
-        this.defNum = 50 + 12 * getLevelNum();
-        this.maxHPNum = 250 + 20 * getLevelNum();
-        this.maxMPNum = 50 + 5 * getLevelNum();
-        this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevelNum() + 1)/Math.log(2)));
-        this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevelNum())/Math.log(2)));
+        this.level = this.getLevel();
+        this.strNum = 40 + 8 * getLevel();
+        this.intNum = 20 + 5 * getLevel();
+        this.dexNum = 20 + 4 * getLevel();
+        this.defNum = 50 + 12 * getLevel();
+        this.maxHP = 250 + 20 * getLevel();
+        this.maxMP = 50 + 5 * getLevel();
+        this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel() + 1)/Math.log(2)));
+        this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel())/Math.log(2)));
     }
     
     /*

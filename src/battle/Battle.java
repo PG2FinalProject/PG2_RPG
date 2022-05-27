@@ -52,7 +52,7 @@ public class Battle {
                             tmp_player = (NovicePlayer)(ActionList[i].instance);
                             //cout << (*tmp_player).getName() << ": ";
                             a = tmp_player.getHP();
-                            b = tmp_player.getMaxHP();
+                            b = tmp_player.getMaxHPNum();
                             /*
                             for (int j = 0; j < (a * 10 / b); j++) {
                                 cout << "■";

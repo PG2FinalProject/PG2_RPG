@@ -5,13 +5,13 @@ import javafx.scene.image.Image;
 public class NovicePlayer{
 
     //Some value related to the level
-    protected int levelNum;
+    protected int level;
 	protected int strNum;
     protected int intNum;
     protected int dexNum;
     protected int defNum;
-	protected int maxHPNum;
-	protected int maxMPNum;
+	protected int maxHP;
+	protected int maxMP;
 	protected int lvupExp;
 	protected int lastlvupExp;
 
@@ -37,8 +37,8 @@ public class NovicePlayer{
     public NovicePlayer(String name) {
         setLevel(1);
 	    setName(name);
-        setHP(getMaxHPNum());
-        setMP(getMaxMPNum());
+        setHP(getMaxHP());
+        setMP(getMaxMP());
         setExp(lastlvupExp);
         setImage();
         //setMoney(0);
@@ -76,8 +76,8 @@ public class NovicePlayer{
         if (hp <= 0) { 
             this.hp = 0; 
         }
-        else if (hp >= getMaxHPNum()) {
-            this.hp = getMaxHPNum(); 
+        else if (hp >= getMaxHP()) {
+            this.hp = getMaxHP(); 
         }
         else { 
             this.hp = hp; 
@@ -92,8 +92,8 @@ public class NovicePlayer{
         if (mp <= 0) { 
             this.mp = 0; 
         }
-        else if (mp > getMaxHPNum()) { 
-            this.mp = getMaxMPNum(); 
+        else if (mp > getMaxHP()) { 
+            this.mp = getMaxMP(); 
         }
         else { 
             this.mp = mp; 
@@ -121,20 +121,20 @@ public class NovicePlayer{
         }
     }
 
-    public int getLevelNum(){
-        return this.levelNum;
+    public int getLevel(){
+        return this.level;
     }
 
     public void setLevel(int level) {
-        this.levelNum = level;
+        this.level = level;
         this.strNum = 20 + 5 * level;
         this.intNum = 20 + 5 * level;
         this.dexNum = 20 + 5 * level;
         this.defNum = 20 + 5 * level;
-        this.maxHPNum = 100 + 10 * level;
-        this.maxMPNum = 40 + 5 * level;
-        this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevelNum() + 1)/Math.log(2)));
-        this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevelNum())/Math.log(2)));
+        this.maxHP = 100 + 10 * level;
+        this.maxMP = 40 + 5 * level;
+        this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel() + 1)/Math.log(2)));
+        this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel())/Math.log(2)));
     }
 
     public int getStrNum(){
@@ -153,12 +153,12 @@ public class NovicePlayer{
         return this.defNum;
     }
     
-    public int getMaxHPNum(){
-        return maxHPNum;
+    public int getMaxHP(){
+        return maxHP;
     }
     
-    public int getMaxMPNum(){
-        return maxMPNum;
+    public int getMaxMP(){
+        return maxMP;
     }
 
     public int getLvupExp(){
