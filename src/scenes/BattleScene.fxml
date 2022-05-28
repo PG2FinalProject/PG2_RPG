@@ -94,7 +94,7 @@
                   <Font size="20.0" />
                </font></Label>
             <ImageView fx:id="playerBattleImageView" fitHeight="71.0" fitWidth="71.0" layoutX="52.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="monsterBattleImageView1" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="monsterBattleImageView1" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="monsterBattleImageView2" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="attackButton" layoutX="26.0" layoutY="230.0" mnemonicParsing="false" onAction="#attackButtonAction" prefHeight="54.0" prefWidth="122.0" text="攻擊" visible="false">
                <font>
@@ -116,8 +116,8 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <ProgressBar fx:id="hpBar" layoutX="320.0" layoutY="265.0" prefWidth="200.0" progress="0.0" visible="false" />
-            <ProgressBar fx:id="mpBar" layoutX="320.0" layoutY="326.0" prefWidth="200.0" progress="0.0" visible="false" />
+            <ProgressBar fx:id="playerHPBar" layoutX="320.0" layoutY="265.0" prefWidth="200.0" progress="0.0" visible="false" />
+            <ProgressBar fx:id="playerMPBar" layoutX="320.0" layoutY="326.0" prefWidth="200.0" progress="0.0" visible="false" />
             <Label fx:id="hpLabel" layoutX="320.0" layoutY="238.0" prefHeight="26.0" prefWidth="26.0" text="HP" visible="false">
                <font>
                   <Font size="15.0" />
@@ -143,11 +143,11 @@
             <Label fx:id="dexLabel" layoutX="530.0" layoutY="299.0" prefHeight="18.0" prefWidth="89.0" text="DEX:" visible="false" />
             <Label fx:id="playerBattleName" layoutX="57.0" layoutY="49.0" />
             <Label fx:id="monsterBattleName1" layoutX="458.0" />
-            <Label fx:id="monsterBattleName2" layoutX="458.0" layoutY="102.0" />
-            <ProgressBar layoutX="484.0" layoutY="109.0" prefHeight="9.0" prefWidth="46.0" progress="0.0" visible="false" />
-            <ProgressBar layoutX="484.0" layoutY="9.0" prefHeight="9.0" prefWidth="46.0" progress="0.0" visible="false" />
+            <Label fx:id="monsterBattleName2" layoutX="458.0" layoutY="95.0" />
+            <ProgressBar fx:id="monsterHPBar2" layoutX="458.0" layoutY="109.0" prefHeight="9.0" prefWidth="71.0" progress="0.0" visible="false" />
+            <ProgressBar fx:id="monsterHPBar1" layoutX="458.0" layoutY="14.0" prefHeight="9.0" prefWidth="71.0" progress="0.0" visible="false" />
             <Label fx:id="defLabel" layoutX="530.0" layoutY="335.0" prefHeight="18.0" prefWidth="89.0" text="DEF:" visible="false" />
-            <Label alignment="CENTER_RIGHT" layoutX="88.0" layoutY="47.0" prefHeight="18.0" prefWidth="34.0" text="LV:" />
+            <Label fx:id="playerLevelLabel" alignment="CENTER_RIGHT" layoutX="88.0" layoutY="47.0" prefHeight="18.0" prefWidth="34.0" text="LV:" />
             <Button fx:id="monsterButton1" layoutX="26.0" layoutY="230.0" mnemonicParsing="false" onAction="#monsterButton1Action" prefHeight="54.0" prefWidth="122.0" text="怪物1" visible="false">
                <font>
                   <Font size="20.0" />
@@ -163,6 +163,11 @@
                   <Font size="20.0" />
                </font>
             </Button>
+            <Label fx:id="winLoseLabel" alignment="CENTER" layoutX="-1.0" onMouseClicked="#stopBattleAction" prefHeight="374.0" prefWidth="640.0" style="-fx-background-color: white;" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
       </children>
     </AnchorPane>
   </children>

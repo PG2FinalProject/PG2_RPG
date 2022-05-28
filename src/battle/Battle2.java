@@ -1,11 +1,11 @@
 package battle;
-import player.*;
 import monster.*;
+import players.*;
 
-public class Battle {
+public class Battle2 {
 
     private Charactor[] ActionList;
-    public Battle(NovicePlayer[] p, BaseMonster[] m, int nplay, int nmon) {
+    public Battle2(NovicePlayer[] p, BaseMonster[] m, int nplay, int nmon) {
 
         ActionList = new Charactor[nplay + nmon];
 

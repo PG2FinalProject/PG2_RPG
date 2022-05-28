@@ -5,16 +5,16 @@ public class BaseMonster {
     private int hp;
 	private int mp;
 
-	private final int attack; 
-	private final int def;  
+	private final int strNum; 
+	private final int defNum;  
 	private final int exp; 
 	private final int maxHP; 
 	private final int maxMP;
     //private final int money = 10;
 
-    public BaseMonster(int attack, int def, int exp, int maxHP, int maxMP) {
-        this.attack = attack;
-        this.def = def;
+    public BaseMonster(int strNum, int defNum, int exp, int maxHP, int maxMP) {
+        this.strNum = strNum;
+        this.defNum = defNum;
         this.exp = exp;
         this.maxHP = maxHP;
         this.maxMP = maxMP;
@@ -48,12 +48,16 @@ public class BaseMonster {
         }
     }
 
-    public int getAttack(){
-        return this.attack;
+    public int getMP(){
+        return this.mp;
     }
 
-    public int getDef(){
-        return this.def;
+    public int getStrNum(){
+        return this.strNum;
+    }
+
+    public int getDefNum(){
+        return this.defNum;
     }
 
     public int getExp(){
@@ -61,10 +65,10 @@ public class BaseMonster {
     }
     
     public int getMaxHP(){
-        return this.hp;
+        return this.maxHP;
     }
 
     public int getMaxMP(){
-        return this.mp;
+        return this.maxMP;
     }
 }

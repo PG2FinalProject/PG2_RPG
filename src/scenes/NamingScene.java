@@ -9,11 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import players.NovicePlayer;
 import javafx.scene.Node;
 
 import Main.RPG;
-
-import player.NovicePlayer;
 
 public class NamingScene {
 

@@ -1,12 +1,11 @@
 package Main;
 
 import javafx.stage.Stage;
+import players.NovicePlayer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
-import player.NovicePlayer;
 
 public class RPG extends Application{
     public static NovicePlayer player;
