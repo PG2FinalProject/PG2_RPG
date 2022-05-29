@@ -1,6 +1,9 @@
 package battle;
 
+import java.util.Random;
+
 import monster.*;
+
 import players.NovicePlayer;
 
 public class Battle {
@@ -9,22 +12,25 @@ public class Battle {
 
     public Battle() {
         //Create Monster
-        int monsterSelecting = (int)Math.random()*3;
+        Random random = new Random(System.currentTimeMillis());
+        int monsterSelecting = random.nextInt(3);
+        System.out.println(monsterSelecting);
         while(monsterSelecting == 3)
-            monsterSelecting = (int)Math.random()*3;
+            monsterSelecting = random.nextInt(3);
         if(monsterSelecting == 0)
             this.monster1 = new GoblinMonster();
         else if(monsterSelecting == 1)
-            this.monster1 = new JWMonster();
+            this.monster1 = new DragonMonster();
         else if(monsterSelecting == 2)
             this.monster1 = new ZombieMonster();
-        monsterSelecting = (int)Math.random()*3;
+        monsterSelecting = random.nextInt(3);
+        System.out.println(monsterSelecting);
         while(monsterSelecting == 3)
-            monsterSelecting = (int)Math.random()*3;
+            monsterSelecting = random.nextInt(3);
         if(monsterSelecting == 0)
             this.monster2 = new GoblinMonster();
         else if(monsterSelecting == 1)
-            this.monster2 = new JWMonster();
+            this.monster2 = new DragonMonster();
         else if(monsterSelecting == 2)
             this.monster2 = new ZombieMonster();
     }

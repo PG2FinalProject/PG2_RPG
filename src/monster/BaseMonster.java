@@ -1,5 +1,7 @@
 package monster;
 
+import javafx.scene.image.Image;
+
 public class BaseMonster {
     
     private int hp;
@@ -10,6 +12,8 @@ public class BaseMonster {
 	private final int exp; 
 	private final int maxHP; 
 	private final int maxMP;
+    private Image monsterImageLeft;
+    private Image monsterImageRight;
     //private final int money = 10;
 
     public BaseMonster(int strNum, int defNum, int exp, int maxHP, int maxMP) {
@@ -70,5 +74,19 @@ public class BaseMonster {
 
     public int getMaxMP(){
         return this.maxMP;
+    }
+    
+    public void setImage(Image left, Image right){
+        this.monsterImageLeft = left;
+        this.monsterImageRight = right;
+    }
+
+    public Image getImage(String mode) {
+        if(mode.equals("Left"))
+            return this.monsterImageLeft;
+        else if(mode.equals("Right"))
+            return this.monsterImageRight;
+        else
+            return null;
     }
 }

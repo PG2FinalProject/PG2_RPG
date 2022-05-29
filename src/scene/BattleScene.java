@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -119,7 +118,7 @@ public class BattleScene implements Initializable {
         
         //Monster1 Initialization
         monsterBattleImageView1.setVisible(true);
-        monsterBattleImageView1.setImage(RPG.player.getplayerImageStandByLeft());
+        monsterBattleImageView1.setImage(battle.getMonster1().getImage("Left"));
         monsterBattleName1.setVisible(true);
         monsterBattleName1.setText("Monster1");
         monsterHPBar1.setVisible(true);
@@ -127,7 +126,7 @@ public class BattleScene implements Initializable {
 
         //Monster2 Initialization
         monsterBattleImageView2.setVisible(true);
-        monsterBattleImageView2.setImage(RPG.player.getplayerImageStandByLeft());
+        monsterBattleImageView2.setImage(battle.getMonster2().getImage("Left"));
         monsterBattleName2.setVisible(true);
         monsterBattleName2.setText("Monster2");
         monsterHPBar2.setVisible(true);
@@ -244,7 +243,7 @@ public class BattleScene implements Initializable {
         moveMonster2BattleImageView2.setByY(moveY2);
 
         moveMonster2BattleImageView2.setOnFinished(event -> {
-            monsterBattleImageView2.setImage(RPG.player.getplayerImageStandByLeft());
+            monsterBattleImageView2.setImage(battle.getMonster2().getImage("Left"));
             if(RPG.player.getHP() == 0){
                 try {
                     stopBattle();
@@ -262,7 +261,7 @@ public class BattleScene implements Initializable {
         });
 
         moveMonster2BattleImageView1.setOnFinished(event -> {
-            monsterBattleImageView2.setImage(RPG.player.getplayerImageStandByRight());
+            monsterBattleImageView2.setImage(battle.getMonster2().getImage("Right"));
             setPlayerBar.setStartValue(RPG.player.getHP());
             battle.attackMonster(battle.getMonster2(), RPG.player);
             hpValueLabel.setText(Integer.toString(RPG.player.getHP()) + "/" + Integer.toString(RPG.player.getMaxHP()));
@@ -272,7 +271,7 @@ public class BattleScene implements Initializable {
         });
 
         moveMonster1BattleImageView2.setOnFinished(event -> {
-            monsterBattleImageView1.setImage(RPG.player.getplayerImageStandByLeft());
+            monsterBattleImageView1.setImage(battle.getMonster1().getImage("Left"));
             if(RPG.player.getHP() == 0){
                 try {
                     stopBattle();
@@ -292,7 +291,7 @@ public class BattleScene implements Initializable {
         });
 
         moveMonster1BattleImageView1.setOnFinished(event -> {
-            monsterBattleImageView1.setImage(RPG.player.getplayerImageStandByRight());
+            monsterBattleImageView1.setImage(battle.getMonster1().getImage("Right"));
             setPlayerBar.setStartValue(RPG.player.getHP());
             battle.attackMonster(battle.getMonster1(), RPG.player);
             hpValueLabel.setText(Integer.toString(RPG.player.getHP()) + "/" + Integer.toString(RPG.player.getMaxHP()));
@@ -337,39 +336,133 @@ public class BattleScene implements Initializable {
         monsterButton2.setVisible(false);
         returnButton.setVisible(false);
 
-        double moveX = (monsterBattleImageView2.getLayoutX() - playerBattleImageView.getLayoutX())-30;
-        double moveY = (monsterBattleImageView2.getLayoutY() - playerBattleImageView.getLayoutY());
-        
         //Forward
         TranslateTransition movePlayerBattleImageView1 = new TranslateTransition(Duration.millis(2000), playerBattleImageView);
-        movePlayerBattleImageView1.setByX(moveX);
-        movePlayerBattleImageView1.setByY(moveY);
+        movePlayerBattleImageView1.setByX(moveX2);
+        movePlayerBattleImageView1.setByY(moveY2);
+
+        //Set monster's bar
+        ProgressBarTransition setMonsterBar = new ProgressBarTransition(Duration.seconds(1.5), monsterHPBar2, battle.getMonster2());
         
-        //Set player's picture
-        PauseTransition setPlayerPictures = new PauseTransition(Duration.millis(1000));
-        setPlayerPictures.setOnFinished(event -> playerBattleImageView.setImage(RPG.player.getplayerImageStandByLeft()));
-
-        //Set monster's hp
-        PauseTransition setMonsterHP = new PauseTransition(Duration.millis(0));
-        setPlayerPictures.setOnFinished(event -> battle.attackPlayer(RPG.player, battle.getMonster2()));
-
         //Backward
         TranslateTransition movePlayerBattleImageView2 = new TranslateTransition(Duration.millis(2000), playerBattleImageView);
-        movePlayerBattleImageView2.setByX(-moveX);
-        movePlayerBattleImageView2.setByY(-moveY);
-        movePlayerBattleImageView2.setOnFinished(event -> playerBattleImageView.setImage(RPG.player.getplayerImageStandByRight()));
-
-        SequentialTransition seqT;
-        seqT = new SequentialTransition(movePlayerBattleImageView1, setPlayerPictures, setMonsterHP, movePlayerBattleImageView2);
-        seqT.play();
+        movePlayerBattleImageView2.setByX(-moveX2);
+        movePlayerBattleImageView2.setByY(-moveY2);
 
         //If monsters were dead, then disable the buttons
         if(battle.getMonster2().getHP() == 0)
             monsterButton2.setDisable(true);
 
         //Monster1 attack
+        //Forward
+        TranslateTransition moveMonster1BattleImageView1 = new TranslateTransition(Duration.millis(2000), monsterBattleImageView1);
+        moveMonster1BattleImageView1.setByX(-moveX1);
+        moveMonster1BattleImageView1.setByY(-moveY1);
+
+        //Set player's bar
+        ProgressBarTransition setPlayerBar = new ProgressBarTransition(Duration.seconds(1.5), playerHPBar, RPG.player);
         
+        //Backward
+        TranslateTransition moveMonster1BattleImageView2 = new TranslateTransition(Duration.millis(2000), monsterBattleImageView1);
+        moveMonster1BattleImageView2.setByX(moveX1);
+        moveMonster1BattleImageView2.setByY(moveY1);
+
         //Monster2 attack
+        TranslateTransition moveMonster2BattleImageView1 = new TranslateTransition(Duration.millis(2000), monsterBattleImageView2);
+        moveMonster2BattleImageView1.setByX(-moveX2);
+        moveMonster2BattleImageView1.setByY(-moveY2);
+
+        TranslateTransition moveMonster2BattleImageView2 = new TranslateTransition(Duration.millis(2000), monsterBattleImageView2);
+        moveMonster2BattleImageView2.setByX(moveX2);
+        moveMonster2BattleImageView2.setByY(moveY2);
+
+        moveMonster2BattleImageView2.setOnFinished(event -> {
+            monsterBattleImageView2.setImage(battle.getMonster2().getImage("Left"));
+            
+            if(RPG.player.getHP() == 0){
+                try {
+                    stopBattle();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else
+            {
+                attackButton.setVisible(true);
+                magicButton.setVisible(true);
+                itemButton.setVisible(true);
+                retrieveButton.setVisible(true);
+            }
+        });
+
+        moveMonster2BattleImageView1.setOnFinished(event -> {
+            monsterBattleImageView2.setImage(battle.getMonster2().getImage("Right"));
+            setPlayerBar.setStartValue(RPG.player.getHP());
+            battle.attackMonster(battle.getMonster2(), RPG.player);
+            hpValueLabel.setText(Integer.toString(RPG.player.getHP()) + "/" + Integer.toString(RPG.player.getMaxHP()));
+            setPlayerBar.setNewValue(RPG.player.getHP());
+            setPlayerBar.play();
+            moveMonster2BattleImageView2.play();
+        });
+
+        moveMonster1BattleImageView2.setOnFinished(event -> {
+            monsterBattleImageView1.setImage(battle.getMonster1().getImage("Left"));
+            if(RPG.player.getHP() == 0){
+                try {
+                    stopBattle();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } 
+            else if(battle.getMonster2().getHP() != 0)
+                moveMonster2BattleImageView1.play();
+            else{
+                try {
+                    stopBattle();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        moveMonster1BattleImageView1.setOnFinished(event -> {
+            monsterBattleImageView1.setImage(battle.getMonster1().getImage("Right"));
+            setPlayerBar.setStartValue(RPG.player.getHP());
+            battle.attackMonster(battle.getMonster1(), RPG.player);
+            hpValueLabel.setText(Integer.toString(RPG.player.getHP()) + "/" + Integer.toString(RPG.player.getMaxHP()));
+            setPlayerBar.setNewValue(RPG.player.getHP());
+            setPlayerBar.play();
+            moveMonster1BattleImageView2.play();
+        });
+
+
+        movePlayerBattleImageView2.setOnFinished(event -> {
+            playerBattleImageView.setImage(RPG.player.getplayerImageStandByRight());
+            if(battle.getMonster1().getHP() != 0)
+                moveMonster1BattleImageView1.play();
+            else if(battle.getMonster1().getHP() != 0)
+                moveMonster1BattleImageView2.play();
+            else{
+                try {
+                    stopBattle();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        movePlayerBattleImageView1.setOnFinished(event -> {
+            playerBattleImageView.setImage(RPG.player.getplayerImageStandByLeft());
+            setMonsterBar.setStartValue(battle.getMonster1().getHP());
+            battle.attackPlayer(RPG.player, battle.getMonster1());
+            setMonsterBar.setNewValue(battle.getMonster1().getHP());
+            setMonsterBar.play();
+            movePlayerBattleImageView2.play();
+        });
+
+        //Monster2 attack
+
+        movePlayerBattleImageView1.play();
     }
 
     @FXML
@@ -385,19 +478,23 @@ public class BattleScene implements Initializable {
     }
 
     public void stopBattle() throws IOException {
-        winLoseLabel.setVisible(true);
-        if(RPG.player.getHP() == 0) {
-            winLoseLabel.setText("You Lose!! QQ");
-        }
-        else {
-            int startLevel = RPG.player.getLevel();
-            battle.getExp(RPG.player, battle.getMonster1().getExp(), battle.getMonster2().getExp());
-            int endLevel = RPG.player.getLevel();
-            winLoseLabel.setText("You Win!!\n" + startLevel + "->" + endLevel);
-        }
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
+        pauseTransition.setOnFinished(event -> {
+            winLoseLabel.setVisible(true);
+            if(RPG.player.getHP() == 0) {
+                winLoseLabel.setText("Game Over!! QQ");
+            } else {
+                int startLevel = RPG.player.getLevel();
+                battle.getExp(RPG.player, battle.getMonster1().getExp(), battle.getMonster2().getExp());
+                int endLevel = RPG.player.getLevel();
+                winLoseLabel.setText("You Win!!\n" + startLevel + "->" + endLevel);
+            }
+        });
+        pauseTransition.play();
     }
 
     public void stopBattleAction(MouseEvent event) {
+        
         if(RPG.player.getHP() == 0) {
             try {
                 root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
