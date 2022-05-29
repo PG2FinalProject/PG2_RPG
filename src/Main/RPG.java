@@ -1,7 +1,7 @@
 package Main;
 
 import javafx.stage.Stage;
-import players.NovicePlayer;
+import player.NovicePlayer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +14,7 @@ public class RPG extends Application{
     public void start(Stage stage) throws Exception{
         Parent root;
         try{
-            root = FXMLLoader.load(getClass().getResource("/scenes/StartScene.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/scene/StartScene.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

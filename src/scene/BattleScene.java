@@ -1,4 +1,4 @@
-package scenes;
+package scene;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,11 +20,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import transition.ProgressBarTransition;
 import Main.RPG;
-
-import transitions.ProgressBarTransition;
-
 import battle.*;
 
 public class BattleScene implements Initializable {

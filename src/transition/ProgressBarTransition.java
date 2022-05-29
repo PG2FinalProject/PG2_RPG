@@ -1,12 +1,11 @@
-package transitions;
+package transition;
 
 import javafx.animation.Transition;
 import javafx.scene.control.ProgressBar;
 import javafx.util.Duration;
 
 import monster.BaseMonster;
-
-import players.NovicePlayer;
+import player.NovicePlayer;
 
 public class ProgressBarTransition extends Transition{
 

@@ -1,5 +1,6 @@
-package players;
+package player;
 
+import item.Item;
 import javafx.scene.image.Image;
 
 public class NovicePlayer{
@@ -20,6 +21,7 @@ public class NovicePlayer{
 	private int hp;
 	private int mp;
 	private int exp;
+    private Item[] item;
 
     //Pictures of the player
     protected Image playerImageStandByRight = new Image(getClass().getResourceAsStream("../playerPictures/NoviceStandByRight.gif"));

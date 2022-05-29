@@ -1,4 +1,4 @@
-package scenes;
+package scene;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import players.NovicePlayer;
+import player.NovicePlayer;
 import javafx.scene.Node;
 
 import Main.RPG;
@@ -30,7 +30,7 @@ public class NamingScene {
         try{
             RPG.player = new NovicePlayer(namingTextField.getText());
             try{
-                root = FXMLLoader.load(getClass().getResource("/scenes/BattleScene.fxml"));
+                root = FXMLLoader.load(getClass().getResource("BattleScene.fxml"));
                 scene = new Scene(root);
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

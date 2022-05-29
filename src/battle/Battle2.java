@@ -1,6 +1,6 @@
 package battle;
 import monster.*;
-import players.*;
+import player.*;
 
 public class Battle2 {
 

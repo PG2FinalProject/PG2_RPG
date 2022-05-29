@@ -3,8 +3,7 @@ package battle;
 import java.util.Random;
 
 import monster.*;
-
-import players.NovicePlayer;
+import player.NovicePlayer;
 
 public class Battle {
     private BaseMonster monster1;
@@ -14,7 +13,6 @@ public class Battle {
         //Create Monster
         Random random = new Random(System.currentTimeMillis());
         int monsterSelecting = random.nextInt(3);
-        System.out.println(monsterSelecting);
         while(monsterSelecting == 3)
             monsterSelecting = random.nextInt(3);
         if(monsterSelecting == 0)
