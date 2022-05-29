@@ -22,7 +22,6 @@ public class Battle {
         else if(monsterSelecting == 2)
             this.monster1 = new ZombieMonster();
         monsterSelecting = random.nextInt(3);
-        System.out.println(monsterSelecting);
         while(monsterSelecting == 3)
             monsterSelecting = random.nextInt(3);
         if(monsterSelecting == 0)

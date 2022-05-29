@@ -41,6 +41,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -92,7 +93,8 @@
             <Label fx:id="dialogue" alignment="TOP_LEFT" layoutX="9.0" layoutY="217.0" onMouseClicked="#closeDialogue" prefHeight="147.0" prefWidth="622.0">
                <font>
                   <Font size="20.0" />
-               </font></Label>
+               </font>
+            </Label>
             <ImageView fx:id="playerBattleImageView" fitHeight="71.0" fitWidth="71.0" layoutX="52.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="monsterBattleImageView1" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="monsterBattleImageView2" fitHeight="71.0" fitWidth="71.0" layoutX="458.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
@@ -101,7 +103,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="itemButton" layoutX="26.0" layoutY="291.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" text="道具" visible="false">
+            <Button fx:id="itemButton" layoutX="26.0" layoutY="291.0" mnemonicParsing="false" onAction="#itemButtonAction" prefHeight="54.0" prefWidth="122.0" text="道具" visible="false">
                <font>
                   <Font size="20.0" />
                </font>
@@ -168,6 +170,51 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <Pane fx:id="itemPane" layoutX="32.0" layoutY="16.0" prefHeight="341.0" prefWidth="575.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Label fx:id="itemLabel1" layoutX="113.0" layoutY="14.0" prefHeight="40.0" prefWidth="385.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="itemLabel2" layoutX="114.0" layoutY="59.0" prefHeight="40.0" prefWidth="385.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="itemLabel3" layoutX="114.0" layoutY="104.0" prefHeight="40.0" prefWidth="385.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="itemLabel4" layoutX="114.0" layoutY="149.0" prefHeight="40.0" prefWidth="385.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="itemLabel5" layoutX="114.0" layoutY="194.0" prefHeight="40.0" prefWidth="385.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="itemLabel6" layoutX="114.0" layoutY="239.0" prefHeight="40.0" prefWidth="385.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="143.0" layoutY="284.0" mnemonicParsing="false" onAction="#itemReturnButtonAction" prefHeight="40.0" prefWidth="289.0" text="返回">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <ImageView fx:id="itemImageView1" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="itemImageView2" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="itemImageView3" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="itemImageView4" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="itemImageView5" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="itemImageView6" fitHeight="40.0" fitWidth="40.0" layoutX="70.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
       </children>
     </AnchorPane>
   </children>

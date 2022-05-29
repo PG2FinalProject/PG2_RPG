@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 public class StartScene {
-
     @FXML
     private Stage stage;
     private Scene scene;

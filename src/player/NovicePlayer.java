@@ -1,6 +1,8 @@
 package player;
 
+import item.HPPotion;
 import item.Item;
+import item.MPPotion;
 import javafx.scene.image.Image;
 
 public class NovicePlayer{
@@ -21,7 +23,8 @@ public class NovicePlayer{
 	private int hp;
 	private int mp;
 	private int exp;
-    private Item[] item;
+    private Item[] item = new Item[6];
+    private int itemIndex = 0;
 
     //Pictures of the player
     protected Image playerImageStandByRight = new Image(getClass().getResourceAsStream("../playerPictures/NoviceStandByRight.gif"));
@@ -43,6 +46,7 @@ public class NovicePlayer{
         setMP(getMaxMP());
         setExp(lastlvupExp);
         setImage();
+        setInitItem();
         //setMoney(0);
     }
 
@@ -77,11 +81,9 @@ public class NovicePlayer{
     public void setHP(int hp) {
         if (hp <= 0) { 
             this.hp = 0; 
-        }
-        else if (hp >= getMaxHP()) {
+        } else if (hp >= getMaxHP()) {
             this.hp = getMaxHP(); 
-        }
-        else { 
+        } else { 
             this.hp = hp; 
         }
     }
@@ -178,6 +180,21 @@ public class NovicePlayer{
 
     public Image getplayerImageStandByLeft(){
         return this.playerImageStandByLeft;
+    }
+
+    private void setInitItem(){
+        this.item[itemIndex] = new HPPotion(10);
+        this.itemIndex++;
+        this.item[itemIndex] = new MPPotion(10);
+        this.itemIndex++;
+    }
+
+    public Item[] getItem(){
+        return this.item;
+    }
+
+    public int getItemIndex(){
+        return this.itemIndex;
     }
 
     /*

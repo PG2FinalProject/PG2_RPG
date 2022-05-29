@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import transition.ProgressBarTransition;
@@ -89,6 +90,36 @@ public class BattleScene implements Initializable {
 
     @FXML
     private Label winLoseLabel;
+
+    @FXML
+    private Pane itemPane;
+
+    @FXML
+    private ImageView itemImageView1;
+    @FXML
+    private ImageView itemImageView2;
+    @FXML
+    private ImageView itemImageView3;
+    @FXML
+    private ImageView itemImageView4;
+    @FXML
+    private ImageView itemImageView5;
+    @FXML
+    private ImageView itemImageView6;
+
+    @FXML
+    private Label itemLabel1;
+    @FXML
+    private Label itemLabel2;
+    @FXML
+    private Label itemLabel3;
+    @FXML
+    private Label itemLabel4;
+    @FXML
+    private Label itemLabel5;
+    @FXML
+    private Label itemLabel6;
+
 
     private Stage stage;
     private Scene scene;
@@ -514,5 +545,44 @@ public class BattleScene implements Initializable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void itemButtonAction(){
+        attackButton.setDisable(true);
+        magicButton.setDisable(true);
+        itemButton.setDisable(true);
+        retrieveButton.setDisable(true);
+
+        itemPane.setVisible(true);
+
+        ImageView[] itemImageViewArray = new ImageView[6];
+        itemImageViewArray[0] = itemImageView1;
+        itemImageViewArray[1] = itemImageView2;
+        itemImageViewArray[2] = itemImageView3;
+        itemImageViewArray[3] = itemImageView4;
+        itemImageViewArray[4] = itemImageView5;
+        itemImageViewArray[5] = itemImageView6;
+
+        Label[] itemLabelArray = new Label[6];
+        itemLabelArray[0] =itemLabel1;
+        itemLabelArray[1] =itemLabel2;
+        itemLabelArray[2] =itemLabel3;
+        itemLabelArray[3] =itemLabel4;
+        itemLabelArray[4] =itemLabel5;
+        itemLabelArray[5] =itemLabel6;
+
+        for(int i = 0; i < RPG.player.getItemIndex(); i++){
+            itemImageViewArray[i].setImage(RPG.player.getItem()[i].getImage());
+            itemLabelArray[i].setText(RPG.player.getItem()[i].getName() + " × " + RPG.player.getItem()[i].getNum());
+        }
+    }
+
+    public void itemReturnButtonAction(){
+        itemPane.setVisible(false);
+
+        attackButton.setDisable(false);
+        magicButton.setDisable(false);
+        itemButton.setDisable(false);
+        retrieveButton.setDisable(false);
     }
  }
