@@ -42,9 +42,6 @@ public class NamingScene {
             e.printStackTrace();
         }
     }
-    protected static NovicePlayer CreateToMap() {
-    	return RPG.player;
-    }
     /*
     @FXML
     public void submitNamingBotton(ActionEvent event) throws IOException
