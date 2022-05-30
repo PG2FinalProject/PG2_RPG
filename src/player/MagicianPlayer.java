@@ -4,8 +4,8 @@ import javafx.scene.image.Image;
 
 public class MagicianPlayer extends NovicePlayer{
 
-    public MagicianPlayer(String name) {
-        super(name);
+    public MagicianPlayer(String name, int level) {
+        super(name, level);
         setLevel();
         setHP(getMaxHP());
         setMP(getMaxMP());

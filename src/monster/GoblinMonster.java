@@ -8,7 +8,7 @@ public class GoblinMonster extends BaseMonster{
         super(60, 40, 30, 100, 50);
 	    setHP(100);
 	    setMP(50);
-        setImage(new Image(getClass().getResourceAsStream("../monsterPictures/GoblinLeft.png")), new Image(getClass().getResourceAsStream("../monsterPictures/GoblinRight.png")));
+        setImage(new Image(getClass().getResourceAsStream("../monsterPictures/GoblinStandByLeft.gif")), new Image(getClass().getResourceAsStream("../monsterPictures/GoblinStandByRight.gif")));
     }
 
 }

@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 
 public class RPG extends Application{
     public static NovicePlayer player;
+
     @Override
     public void start(Stage stage) throws Exception{
         Parent root;

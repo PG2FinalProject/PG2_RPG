@@ -28,7 +28,7 @@ public class NamingScene {
     public void submitNamingBotton(ActionEvent event) throws IOException
     {
         try{
-            RPG.player = new NovicePlayer(namingTextField.getText());
+            RPG.player = new NovicePlayer(namingTextField.getText(), 1);
             try{
                 root = FXMLLoader.load(getClass().getResource("BattleScene.fxml"));
                 scene = new Scene(root);

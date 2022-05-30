@@ -4,8 +4,8 @@ import javafx.scene.image.Image;
 
 public class KnightPlayer extends NovicePlayer{
 
-    public KnightPlayer(String name) {
-        super(name);
+    public KnightPlayer(String name, int level) {
+        super(name, level);
         setLevel();
         setHP(getMaxHP());
         setMP(getMaxMP());

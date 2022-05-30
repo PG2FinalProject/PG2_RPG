@@ -48,9 +48,9 @@ public class Battle {
         player.setHP(player.getHP() - monster.getStrNum());
     }
 
-    public void getExp(NovicePlayer player, int... exps){
+    public void gainExp(NovicePlayer player, int... exps){
         for(int exp : exps){
-            player.setExp(exp);
+            player.setExp(player.getExp() + exp);
         }
     }
 

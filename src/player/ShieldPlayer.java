@@ -4,8 +4,8 @@ import javafx.scene.image.Image;
 
 public class ShieldPlayer extends NovicePlayer{
 
-    public ShieldPlayer(String name) {
-        super(name);
+    public ShieldPlayer(String name, int level) {
+        super(name, level);
         setLevel();
         setHP(getMaxHP());
         setMP(getMaxMP());
