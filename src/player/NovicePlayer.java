@@ -205,7 +205,7 @@ public class NovicePlayer{
         return this.playerImageStandByLeft;
     }
     
-    public Image getplayerImageRunnigStandByRight(){
+    public Image getplayerImageRunningByRight(){
         return this.playerImageRunningByRight;
     }
 
