@@ -37,5 +37,7 @@ public class MagicianPlayer extends NovicePlayer{
     public void setImage(){
         this.playerImageStandByRight = new Image(getClass().getResourceAsStream("../playerPictures/MagicianStandByRight.gif"));
         this.playerImageStandByLeft = new Image(getClass().getResourceAsStream("../playerPictures/MagicianStandByLeft.gif"));
+        this.playerImageRunningByRight = new Image(getClass().getResourceAsStream("../playerPictures/Magician_Running_2.5.gif"));
+        this.playerImageRunningByLeft = new Image(getClass().getResourceAsStream("../playerPictures/Magician_Running_2.gif"));
     }
 }

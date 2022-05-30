@@ -30,7 +30,7 @@ public class NamingScene {
         try{
             RPG.player = new NovicePlayer(namingTextField.getText(), 1);
             try{
-                root = FXMLLoader.load(getClass().getResource("BattleScene.fxml"));
+                root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
                 scene = new Scene(root);
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

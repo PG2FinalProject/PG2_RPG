@@ -23,11 +23,15 @@ public class NovicePlayer{
 	private int exp;
     private Item[] item = new Item[6];
     private int itemIndex = 0;
+    private int xLocation = 2;
+    private int yLocation = 2;
+    private int MapLocation = 1;
 
     //Pictures of the player
     protected Image playerImageStandByRight = new Image(getClass().getResourceAsStream("../playerPictures/NoviceStandByRight.gif"));
     protected Image playerImageStandByLeft = new Image(getClass().getResourceAsStream("../playerPictures/NoviceStandByLeft.gif"));
-
+    protected Image playerImageRunningByLeft = new Image(getClass().getResourceAsStream("../playerPictures/Newbie_Runinng_1.gif"));
+    protected Image playerImageRunningByRight = new Image(getClass().getResourceAsStream("../playerPictures/Newbie_Running_1.gif"));
 	//private int money;
     /*
 	private Item* backpack[6] = {NULL}; 
@@ -46,6 +50,8 @@ public class NovicePlayer{
         setImage();
         setInitItem();
         //setMoney(0);
+        setLocation(2, 2);
+        setMapLocation(1);
     }
 
     
@@ -136,6 +142,27 @@ public class NovicePlayer{
         this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel() + 1)/Math.log(2)));
         this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel())/Math.log(2)));
     }
+    
+    public void setLocation(int x, int y) {
+    	this.xLocation = x;
+    	this.yLocation = y;
+    }
+    
+    public void setMapLocation(int Map) {
+    	this.MapLocation = Map;
+    }
+    
+    public int getMapLocation() {
+    	return this.MapLocation;
+    }
+    
+    public int getX_Location() {
+    	return this.xLocation;
+    }
+    
+    public int getY_Location() {
+    	return this.yLocation;
+    }
 
     public int getStrNum(){
         return this.strNum;
@@ -176,6 +203,14 @@ public class NovicePlayer{
 
     public Image getplayerImageStandByLeft(){
         return this.playerImageStandByLeft;
+    }
+    
+    public Image getplayerImageRunnigStandByRight(){
+        return this.playerImageRunningByRight;
+    }
+
+    public Image getplayerImageRunningByLeft(){
+        return this.playerImageRunningByLeft;
     }
 
     private void setInitItem(){

@@ -38,6 +38,8 @@ public class ShieldPlayer extends NovicePlayer{
     public void setImage(){
         this.playerImageStandByRight = new Image(getClass().getResourceAsStream("../playerPictures/ShieldStandByRight.gif"));
         this.playerImageStandByLeft = new Image(getClass().getResourceAsStream("../playerPictures/ShieldStandByLeft.gif"));
+        this.playerImageRunningByRight = new Image(getClass().getResourceAsStream("../playerPictures/Shield_Running_2.5.gif"));
+        this.playerImageRunningByLeft = new Image(getClass().getResourceAsStream("../playerPictures/Shield_Running_2.gif"));
     }
 
 }

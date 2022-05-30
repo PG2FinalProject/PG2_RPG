@@ -37,5 +37,7 @@ public class KnightPlayer extends NovicePlayer{
     public void setImage(){
         this.playerImageStandByRight = new Image(getClass().getResourceAsStream("../playerPictures/KnightStandByRight.gif"));
         this.playerImageStandByLeft = new Image(getClass().getResourceAsStream("../playerPictures/KnightStandByLeft.gif"));
+        this.playerImageRunningByRight = new Image(getClass().getResourceAsStream("../playerPictures/Knight_Running_2.5.gif"));
+        this.playerImageRunningByLeft = new Image(getClass().getResourceAsStream("../playerPictures/Knight_Running_2.gif"));
     }
 }
