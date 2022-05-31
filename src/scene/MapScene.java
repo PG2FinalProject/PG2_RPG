@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -38,6 +39,7 @@ public class MapScene
 	private ImageView PlayerImage;
     private Pane OpeningPane;
     private Button BattleButton;
+    private ImageView Image_onPane;
 	private ImageView[][] MapImages = {{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 		{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 		{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
@@ -87,6 +89,7 @@ public class MapScene
 		int direction = 0;
 		if(opening) {
 			this.Map_Initial();
+			Image_onPane.setImage(new Image(getClass().getResourceAsStream("../mapElementsPicture/Welcome.png")));
 			BattleButton.setVisible(false);
 			BattleButton.setDisable(true);
 			OpeningPane.setVisible(false);

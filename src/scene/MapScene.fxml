@@ -10,7 +10,10 @@
    <children>
       <AnchorPane onKeyPressed="#keyPressed" prefHeight="444.0" prefWidth="600.0">
          <children>
-            <Pane fx:id="OpeningPane" onKeyPressed="#keyPressed" prefHeight="400.0" prefWidth="600.0" />
+            <Pane fx:id="OpeningPane" onKeyPressed="#keyPressed" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <ImageView fx:id="image_onPane" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="200.0" translateY="125.0" />
+               </children></Pane>
             <Button fx:id="BattleButton" layoutX="189.0" layoutY="184.0" mnemonicParsing="false" onAction="#BattleButton_click" onKeyPressed="#BattleButton_click" onMouseClicked="#BattleButton_click" prefWidth="222.0" text="Eneny" />
             <ImageView fx:id="PlayerImage" fitHeight="150.0" fitWidth="150.0" layoutX="225.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
          </children>
