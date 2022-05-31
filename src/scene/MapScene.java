@@ -1,6 +1,7 @@
 package scene;
 
 import java.io.IOException;
+
 import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,10 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.HLineTo;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.VLineTo;
 import javafx.stage.Stage;
@@ -21,9 +23,11 @@ import moveMent.MapMovement;
 
 public class MapScene
 {
+	
 	MapMovement move_ment = new MapMovement();
-	boolean walking = false;
+	private boolean walking = false;
 	private int status = -1;
+	private boolean opening = true;
 	
 	@FXML
     private Stage stage;
@@ -32,17 +36,19 @@ public class MapScene
     
     @FXML
 	private ImageView PlayerImage;
-	private ImageView MapImage;
+    private Pane OpeningPane;
+    private Button BattleButton;
 	private ImageView[][] MapImages = {{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 		{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 		{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 		{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 		{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 	};
-    
 	@FXML
-    public void BattleButton(ActionEvent event) throws IOException
+    public void BattleButton_click(ActionEvent event) throws IOException
     {
+		BattleButton.setVisible(false);
+		BattleButton.setDisable(true);
 		//BattleButton invisible
         root = FXMLLoader.load(getClass().getResource("BattleScene.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -50,18 +56,26 @@ public class MapScene
         stage.setScene(scene);
         stage.show();
     }
-	
 	//call battle
 	public void callBattle() {
 		//BattleButten visible;
-		//SettingMap_initial
+		BattleButton.setVisible(true);
+		BattleButton.setDisable(false);
 	}
 	//SetMap(Initialize)
-	public void Map_Initial(int map) {
-		//When changing Map or after battle
+	public void Map_Initial() {
+		//When changing Map
 		//1. Reset Player image
 		//2. Reset Player Location
 		//3. Reset Player MapLocation
+		this.Player_initial();
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 7; j++) {
+				MapImages[i][j].setVisible(true);
+				MapImages[i][j].setImage(move_ment.newMapFragment(i, j));
+			}
+		}
+		RPG.player.setLocation(2, 2);
 	}
 	//Set PlayerImage(Initialize)
 	public void Player_initial() {
@@ -71,7 +85,13 @@ public class MapScene
 	//wasd controller
 	public void keyPressed(KeyEvent key) {
 		int direction = 0;
-		if(!walking) {
+		if(opening) {
+			this.Map_Initial();
+			BattleButton.setVisible(false);
+			BattleButton.setDisable(true);
+			OpeningPane.setVisible(false);
+			opening = !opening;
+		}else if(!walking) {
 			switch(key.getCode()) {
 			case W:
 				walking = true;
@@ -109,12 +129,16 @@ public class MapScene
 				DontMove(direction);
 			case 2://Battle
 				callBattle();
+			case 3://Chest
+				MoveMap(direction);
+			case 4://Floor bf Door
+				MoveMap(direction);
 			case 5://Change Map
 				RPG.player.setMapLocation(2);
-				Map_Initial(2);
+				Map_Initial();
 			case 6://Change Map
-				RPG.player.setMapLocation(1);
-				Map_Initial(1);
+				callBattle();
+				Map_Initial();
 			default :
 				break;
 			}
@@ -156,16 +180,16 @@ public class MapScene
 					switch(direction) {
 					case 0:
 						PlayerImage.setImage(RPG.player.getplayerImageStandByLeft());
-						MapImage.yProperty().add(150); break;
+						MapImages[fi][fj].yProperty().add(150); break;
 					case 1:
 						PlayerImage.setImage(RPG.player.getplayerImageStandByRight());
-						MapImage.yProperty().add(-150); break;
+						MapImages[fi][fj].yProperty().add(-150); break;
 					case 2:
 						PlayerImage.setImage(RPG.player.getplayerImageStandByLeft());
-						MapImage.xProperty().add(150); break;
+						MapImages[fi][fj].xProperty().add(150); break;
 					case 3:
 						PlayerImage.setImage(RPG.player.getplayerImageStandByRight());
-						MapImage.xProperty().add(-150); break;
+						MapImages[fi][fj].xProperty().add(-150); break;
 					}
 					walking = false;
 				});
