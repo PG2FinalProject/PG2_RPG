@@ -30,7 +30,7 @@ public class NovicePlayer{
     //Pictures of the player
     protected Image playerImageStandByRight = new Image(getClass().getResourceAsStream("../playerPictures/NoviceStandByRight.gif"));
     protected Image playerImageStandByLeft = new Image(getClass().getResourceAsStream("../playerPictures/NoviceStandByLeft.gif"));
-    protected Image playerImageRunningByLeft = new Image(getClass().getResourceAsStream("../playerPictures/Newbie_Runinng_1.gif"));
+    protected Image playerImageRunningByLeft = new Image(getClass().getResourceAsStream("../playerPictures/Newbie_Running_1.gif"));
     protected Image playerImageRunningByRight = new Image(getClass().getResourceAsStream("../playerPictures/Newbie_Running_1.gif"));
 	//private int money;
     /*

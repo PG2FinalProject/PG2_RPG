@@ -27,6 +27,15 @@ public class NamingScene {
     @FXML
     public void submitNamingBotton(ActionEvent event) throws IOException
     {
+    	/*
+    	//RPG.player = new NovicePlayer(namingTextField.getText(), 1);
+        root = FXMLLoader.load(getClass().getClassLoader().getResource("MapScene.fxml"));
+        scene = new Scene(root);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    	*/
+        
         try{
             RPG.player = new NovicePlayer(namingTextField.getText(), 1);
             try{
@@ -41,6 +50,7 @@ public class NamingScene {
         } catch(Exception e) {
             e.printStackTrace();
         }
+        
     }
     /*
     @FXML

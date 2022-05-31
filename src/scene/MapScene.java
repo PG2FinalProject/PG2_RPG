@@ -97,11 +97,12 @@ public class MapScene
 		int direction = 0;
 		if(opening) {
 			this.Map_Initial();
-			Image_onPane.setImage(new Image(getClass().getResourceAsStream("../mapElementsPicture/Welcome.png")));
+			//Image_onPane.setImage(new Image(getClass().getResourceAsStream("../mapElementsPicture/Welcome.png")));
 			BattleButton.setVisible(false);
 			BattleButton.setDisable(true);
 			OpeningPane.setVisible(false);
 			opening = !opening;
+			System.out.println("Useing");
 		}else if(!walking) {
 			switch(key.getCode()) {
 			case W:
