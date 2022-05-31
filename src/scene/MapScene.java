@@ -24,6 +24,14 @@ import moveMent.MapMovement;
 
 public class MapScene
 {
+	//Otuslettia:
+	//Left to go:
+	//1. Map design for the second Map
+	//2. Q:How to call Boss?
+	//3. Q:How to get key?
+	//4. More kind of Floor
+	//5. Chest Animation
+	//6. If the Animation and picture go well?
 	
 	MapMovement move_ment = new MapMovement();
 	private boolean walking = false;
