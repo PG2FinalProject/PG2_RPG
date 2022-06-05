@@ -74,6 +74,7 @@ public class MapMovement {
 		//use i, j, Player Location to figure out what image should it be;
 		int ab_i = RPG.player.getX_Location() - 2 + i;
 		int ab_j = RPG.player.getX_Location() - 2 + j;
+		//System.out.println("i = "+i+", j = "+j);
 		return wholeMap(ab_i, ab_j);
 	}
 	//
@@ -85,7 +86,7 @@ public class MapMovement {
 		case 1:
 			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Wall.png"));
 		case 2:
-			return new Image(getClass().getResourceAsStream("../mapElementsPicture/MonsterBlock.png"));
+			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Monster_Block.png"));
 		case 3:
 			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Chest_1.png"));
 		case 4:
