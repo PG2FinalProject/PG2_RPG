@@ -7,9 +7,9 @@ public class MapMovement {
 	private int[][] MapArray_1 = {
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-			{1,1,0,1,1,1,1,1,1,1,1,1,1,1},
+			{1,1,0,0,0,1,1,1,1,1,1,1,1,1},
 			{1,1,0,0,0,2,0,0,0,0,0,0,1,1},
-			{1,1,1,1,1,0,1,0,1,1,1,0,1,1},
+			{1,1,0,1,1,0,1,0,1,1,1,0,1,1},
 			{1,1,2,0,0,2,1,0,1,2,1,0,1,1},
 			{1,1,0,1,1,0,1,0,1,0,1,0,1,1},
 			{1,1,2,3,1,2,1,0,0,0,1,0,1,1},
@@ -73,8 +73,8 @@ public class MapMovement {
 	public Image newMapFragment(int i, int j) {
 		//use i, j, Player Location to figure out what image should it be;
 		int ab_i = RPG.player.getX_Location() - 2 + i;
-		int ab_j = RPG.player.getX_Location() - 2 + j;
-		//System.out.println("i = "+i+", j = "+j);
+		int ab_j = RPG.player.getY_Location() - 2 + j;
+		System.out.println("i = "+ab_i+", j = "+ab_j);
 		return wholeMap(ab_i, ab_j);
 	}
 	//
@@ -84,7 +84,7 @@ public class MapMovement {
 		case 0:
 			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Floor_1.png"));
 		case 1:
-			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Wall.png"));
+			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Wall-1.png"));
 		case 2:
 			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Monster_Block.png"));
 		case 3:
