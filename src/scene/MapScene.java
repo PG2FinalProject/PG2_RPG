@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import Main.RPG;
 import moveMent.MapMovement;
+import player.NovicePlayer;
 
 public class MapScene
 {
@@ -56,7 +57,7 @@ public class MapScene
     @FXML
     private ImageView Image_onPane;
     @FXML
-    private ImageView[][] MapImages = new ImageView[5][7];
+    private ImageView[][] MapImages = new ImageView[7][5];
 	/*MapImages = {{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 				{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 				{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
@@ -66,14 +67,27 @@ public class MapScene
 	@FXML
     void BattleButton_click(ActionEvent event) throws IOException
     {
+		
+		//BattleButton invisible
+		try{
+            //RPG.player = new NovicePlayer(namingTextField.getText(), 1);
+            try{
+                root = FXMLLoader.load(getClass().getResource("BattleScene.fxml"));
+                scene = new Scene(root);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+		//
 		BattleButton.setVisible(false);
 		BattleButton.setDisable(true);
-		//BattleButton invisible
-        root = FXMLLoader.load(getClass().getResource("BattleScene.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+		DontMove(0);
+		
     }
 	//call battle
 	private void callBattle() {
@@ -89,19 +103,16 @@ public class MapScene
 		//2. Reset Player Location
 		//3. Reset Player MapLocation
 		RPG.player.setLocation(2, 2);
-		for(int i = 0; i < 5; i++) {
-			for(int j = 0; j < 7; j++) {
+		for(int i = 0; i < 7; i++) {
+			for(int j = 0; j < 5; j++) {
 				MapImages[i][j] = new ImageView();
 				MapImages[i][j].setPreserveRatio(true);
 				MapImages[i][j].setSmooth(true);
 				MapImages[i][j].relocate(-175+150*i+100, -225+150*j+75);
-				//MapImages[i][j].setTranslateX(225);
-				//MapImages[i][j].setTranslateY(125);
 				MapImages[i][j].setFitWidth(150);
 				MapImages[i][j].setVisible(true);
 				MapImages[i][j].setImage(move_ment.newMapFragment(i, j));
 				Map_Pane.getChildren().addAll(MapImages[i][j]);
-				//getChildren().add(MapImages[i][j];)
 			}
 		}
 		this.Player_initial();
@@ -218,8 +229,8 @@ public class MapScene
 	//the Animation to move Map image views
 	public void MoveMap(int direction) {//0:UP, 1:DOWN, 2:LEFT, 3:RIGHT
 		Path path = new Path();
-		for(int i = 0; i < 5; i++) {
-			for(int j = 0; j < 7; j++) {
+		for(int i = 0; i < 7; i++) {
+			for(int j = 0; j < 5; j++) {
 				path.getElements().add(new MoveTo(-75+150*i, -150+150*j));
 				switch(direction) {
 				case 0:
