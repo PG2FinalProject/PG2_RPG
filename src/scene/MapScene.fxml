@@ -27,6 +27,7 @@
             <Pane fx:id="Map_Pane" prefHeight="400.0" prefWidth="600.0">
                <children>
                   <Button fx:id="START_B" layoutX="264.0" layoutY="243.0" mnemonicParsing="false" onKeyPressed="#keyPressed" onMouseClicked="#keyPressed" text="PRESS W" />
+                  <Button fx:id="Win_B" layoutX="264.0" layoutY="243.0" mnemonicParsing="false" onAction="#WinButton" text="You Win!!" visible="false" />
                </children>
             </Pane>
          </children>

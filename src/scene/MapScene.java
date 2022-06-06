@@ -54,7 +54,7 @@ public class MapScene
     @FXML
     private Pane OpeningPane, Map_Pane;
     @FXML
-    private Button BattleButton, START_B, WB, AB, SB, DB;
+    private Button BattleButton, START_B, WB, AB, SB, DB, Win_B;
     @FXML
     private ImageView Image_onPane;
     @FXML
@@ -102,7 +102,7 @@ public class MapScene
 		//1. Reset Player image
 		//2. Reset Player Location
 		//3. Reset Player MapLocation
-		RPG.player.setLocation(2, 2);
+		//RPG.player.setLocation(2, 2);
 		for(int i = 0; i < 7; i++) {
 			for(int j = 0; j < 5; j++) {
 				MapImages[i][j] = new ImageView();
@@ -117,7 +117,18 @@ public class MapScene
 		}
 		this.Player_initial();
 	}
-	
+	@FXML
+	void WinButton(ActionEvent event) {
+		try {
+            root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();   
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
 	//Set PlayerImage(Initialize)
 	private void Player_initial() {
 		PlayerImage.setVisible(true);
@@ -128,6 +139,9 @@ public class MapScene
 	@FXML
 	void keyPressed(KeyEvent key) {
 		System.out.println("Press!");
+		if(MapMovement.GetWin()) {
+			Win_B.setVisible(true);
+		}
 		int direction = 0;
 		if(opening) {
 			this.Map_Initial();
@@ -199,6 +213,7 @@ public class MapScene
 				break;
 			case 5://Change Map
 				RPG.player.setMapLocation(2);
+				RPG.player.setLocation(2, 2);
 				Map_Initial();
 				break;
 			case 6://Change Map
@@ -288,12 +303,16 @@ public class MapScene
 				tl.setDuration(Duration.millis(500));
 				switch(direction) {
 				case 0:
+					PlayerImage.setImage(RPG.player.getplayerImageRunningByLeft());
 					tl.setByY(150); break;
 				case 1:
+					PlayerImage.setImage(RPG.player.getplayerImageRunningByRight());
 					tl.setByY(-150); break;
 				case 2:
+					PlayerImage.setImage(RPG.player.getplayerImageRunningByLeft());
 					tl.setByX(150); break;
 				case 3:
+					PlayerImage.setImage(RPG.player.getplayerImageRunningByRight());
 					tl.setByX(-150); break;
 				}
 				System.out.printf("i = "+ i+ "j = "+j+"\n");
@@ -304,12 +323,16 @@ public class MapScene
 					t2.setDuration(Duration.millis(1));
 					switch(direction) {
 					case 0:
+						PlayerImage.setImage(RPG.player.getplayerImageStandByLeft());
 						t2.setByY(-150); break;
 					case 1:
+						PlayerImage.setImage(RPG.player.getplayerImageStandByRight());
 						t2.setByY(150); break;
 					case 2:
+						PlayerImage.setImage(RPG.player.getplayerImageStandByLeft());
 						t2.setByX(-150); break;
 					case 3:
+						PlayerImage.setImage(RPG.player.getplayerImageStandByRight());
 						t2.setByX(150); break;
 					}
 					//System.out.printf("fi = "+ fi+ "fj = "+fj);

@@ -16,10 +16,10 @@ public class MapMovement {
 			{1,1,1,1,1,0,1,1,1,1,1,0,1,1},
 			{1,1,0,2,0,0,0,0,0,0,0,0,1,1},
 			{1,1,0,1,1,0,1,1,1,1,1,1,1,1},
-			{1,1,1,1,1,0,0,0,0,0,4,1,1,1},
-			{1,1,2,0,0,0,1,1,1,1,5,1,1,1},
-			{1,1,1,1,1,1,1,1,1,1,0,1,1,1},
-			{1,1,1,1,1,1,1,1,1,1,0,1,1,1}
+			{1,1,1,1,1,0,0,0,0,0,4,5,1,1},
+			{1,1,2,0,0,0,1,1,1,1,1,1,1,1},
+			{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+			{1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 	};
 	static private int[][] MapArray_2 = {
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -38,8 +38,14 @@ public class MapMovement {
 			{1,1,1,1,1,1,1,1,1,1,0,1,1,1},
 			{1,1,1,1,1,1,1,1,1,1,0,1,1,1}
 	};
+	private static boolean ChestTriggered = false, Win = false;
 	public static void ReSetMap() {
-		
+		ChestTriggered = false;
+		Win = false;
+		RPG.player.setLocation(2, 2);
+	}
+	public static boolean GetWin() {
+		return Win;
 	}
 	//Using to return the correct images of Map & Player
 	public int Move(int direction) {//1: Don't Move, 0: Move, 5:Change Map, 2:Battle
@@ -55,6 +61,14 @@ public class MapMovement {
 				else 
 					MapArray_2[x][y-1] = 0;
 				return 2;
+			}else if (map[x][y-1] == 3) {
+				if(!ChestTriggered) {
+					ChestTriggered = true;
+					/*GET CHEST FUNCTION*/
+				}
+			}else if (map[x][y-1] == 6) {
+				Win = true;
+				return 2;
 			}return map[x][y-1];
 		case 1:
 			if(map[x][y+1] == 2) {
@@ -62,6 +76,14 @@ public class MapMovement {
 					MapArray_1[x][y+1] = 0;
 				else 
 					MapArray_2[x][y+1] = 0;
+				return 2;
+			}else if (map[x][y+1] == 3) {
+				if(!ChestTriggered) {
+					ChestTriggered = true;
+					/*GET CHEST FUNCTION*/
+				}
+			}else if (map[x][y+1] == 6) {
+				Win = true;
 				return 2;
 			}return map[x][y+1];
 		case 2:
@@ -71,6 +93,14 @@ public class MapMovement {
 				else 
 					MapArray_2[x-1][y] = 0;
 				return 2;
+			}else if (map[x-1][y] == 3) {
+				if(!ChestTriggered) {
+					ChestTriggered = true;
+					/*GET CHEST FUNCTION*/
+				}
+			}else if (map[x-1][y] == 6) {
+				Win = true;
+				return 2;
 			}return map[x-1][y];
 		case 3:
 			if(map[x+1][y] == 2) {
@@ -78,6 +108,14 @@ public class MapMovement {
 					MapArray_1[x+1][y] = 0;
 				else 
 					MapArray_2[x+1][y] = 0;
+				return 2;
+			}else if (map[x+1][y] == 3) {
+				if(!ChestTriggered) {
+					ChestTriggered = true;
+					/*GET CHEST FUNCTION*/
+				}
+			}else if (map[x+1][y] == 6) {
+				Win = true;
 				return 2;
 			}return map[x+1][y];
 		default:
@@ -103,7 +141,10 @@ public class MapMovement {
 		case 2:
 			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Monster_Block.png"));
 		case 3:
-			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Chest_1.png"));
+			if(!ChestTriggered) 
+				return new Image(getClass().getResourceAsStream("../mapElementsPicture/Chest_1.png"));
+			else
+				return new Image(getClass().getResourceAsStream("../mapElementsPicture/Chest_3.png"));
 		case 4:
 			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Floor_bf_door.png"));
 		case 5:
