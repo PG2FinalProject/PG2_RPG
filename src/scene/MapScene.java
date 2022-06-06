@@ -84,10 +84,15 @@ public class MapScene
             e.printStackTrace();
         }
 		//
-		BattleButton.setVisible(false);
-		BattleButton.setDisable(true);
-		DontMove(0);
-		
+		if(!MapMovement.GetWin()) {
+			BattleButton.setVisible(false);
+			BattleButton.setDisable(true);
+			DontMove(0);
+		}else {
+			Win_B.setVisible(true);
+			Win_B.setDisable(false);
+			Win_B.toFront();
+		}
     }
 	//call battle
 	private void callBattle() {
@@ -115,7 +120,12 @@ public class MapScene
 				Map_Pane.getChildren().addAll(MapImages[i][j]);
 			}
 		}
-		this.Player_initial();
+		if(MapMovement.GetWin()) {
+			Win_B.setVisible(true);
+			Win_B.setDisable(false);
+			Win_B.toFront();	
+		}else
+			this.Player_initial();
 	}
 	@FXML
 	void WinButton(ActionEvent event) {
