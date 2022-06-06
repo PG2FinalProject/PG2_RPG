@@ -15,7 +15,7 @@
                <children>
                   <ImageView fx:id="Image_onPane" disable="true" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="200.0" translateY="125.0" visible="false" />
                </children></Pane>
-            <Button fx:id="BattleButton" layoutX="189.0" layoutY="184.0" mnemonicParsing="false" onAction="#BattleButton_click" onKeyPressed="#BattleButton_click" onMouseClicked="#BattleButton_click" prefWidth="222.0" text="Eneny" visible="false" />
+            <Button fx:id="BattleButton" layoutX="189.0" layoutY="184.0" mnemonicParsing="false" onAction="#BattleButton_click" prefWidth="222.0" text="Eneny" visible="false" />
             <ImageView fx:id="PlayerImage" fitHeight="150.0" fitWidth="150.0" layoutX="225.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../mapElementsPicture/Welcome.png" />

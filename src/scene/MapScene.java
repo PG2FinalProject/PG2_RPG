@@ -66,9 +66,8 @@ public class MapScene
 				{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 			}*/
 	@FXML
-    void BattleButton_click(ActionEvent event) throws IOException
+    void BattleButton_click(ActionEvent event) //throws IOException
     {
-		
 		//BattleButton invisible
 		try{
             //RPG.player = new NovicePlayer(namingTextField.getText(), 1);
