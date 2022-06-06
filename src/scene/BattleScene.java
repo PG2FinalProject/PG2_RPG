@@ -718,4 +718,16 @@ public class BattleScene implements Initializable {
         itemButton.setDisable(false);
         retrieveButton.setDisable(false);
     }
+
+    public void retrieveButtonAction(ActionEvent event){
+        try {
+            root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();   
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
  }

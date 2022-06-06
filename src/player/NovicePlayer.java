@@ -133,11 +133,11 @@ public class NovicePlayer{
 
     public void setLevel(int level) {
         this.level = level;
-        this.strNum = 2000 + 5 * level;
-        this.intNum = 20 + 5 * level;
+        this.strNum = 50 + 5 * level;
+        this.intNum = 50 + 5 * level;
         this.dexNum = 20 + 5 * level;
         this.defNum = 20 + 5 * level;
-        this.maxHP = 2000 + 10 * level;
+        this.maxHP = 400 + 10 * level;
         this.maxMP = 40 + 5 * level;
         this.lvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel() + 1)/Math.log(2)));
         this.lastlvupExp = (int) Math.ceil(Math.pow(10, Math.log(getLevel())/Math.log(2)));
@@ -226,6 +226,11 @@ public class NovicePlayer{
 
     public int getItemIndex(){
         return this.itemIndex;
+    }
+
+    public void gainItem(Item newItem){
+        this.item[this.itemIndex] = newItem;
+        itemIndex++;
     }
 
     /*
