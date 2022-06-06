@@ -551,7 +551,7 @@ public class BattleScene implements Initializable {
             }
         }
         else {
-            if(RPG.player.getLevel() >= 5 && RPG.player.getName().compareTo("class player.NovicePlayer") == 0){
+            if(RPG.player.getLevel() >= 5 && String.valueOf(RPG.player.getClass()).compareTo("class player.NovicePlayer") == 0){
                 try {
                     root = FXMLLoader.load(getClass().getResource("TransferScene.fxml"));
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();

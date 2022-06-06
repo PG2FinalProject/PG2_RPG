@@ -38,7 +38,7 @@ public class NamingScene {
     	*/
         
         try{
-            RPG.player = new NovicePlayer(namingTextField.getText(), 5);
+            RPG.player = new NovicePlayer(namingTextField.getText(), 1);
             try{
             	MapMovement.ReSetMap();
                 root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
