@@ -215,10 +215,12 @@ public class MapScene
 				RPG.player.setMapLocation(2);
 				RPG.player.setLocation(2, 2);
 				Map_Initial();
+				walking = !walking;
 				break;
 			case 6://Change Map
 				callBattle();
 				Map_Initial();
+				walking = !walking;
 				break;
 			default :
 				break;

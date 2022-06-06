@@ -21,7 +21,7 @@ public class TransferScene {
 
     @FXML
     void KnightAction(ActionEvent event) throws IOException{
-        RPG.player = new KnightPlayer(RPG.player.getName(), RPG.player.getLevel());
+        RPG.player = new KnightPlayer(RPG.player.getName(), RPG.player.getLevel(), RPG.player.getX_Location(), RPG.player.getY_Location(), RPG.player.getMapLocation());
         try {
             root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -34,7 +34,7 @@ public class TransferScene {
     }
     @FXML
     void MagicialAction(ActionEvent event) {
-        RPG.player = new KnightPlayer(RPG.player.getName(), RPG.player.getLevel());
+        RPG.player = new KnightPlayer(RPG.player.getName(), RPG.player.getLevel(), RPG.player.getX_Location(), RPG.player.getY_Location(), RPG.player.getMapLocation());
         try {
             root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -47,7 +47,7 @@ public class TransferScene {
     }
     @FXML
     void ShieldAction(ActionEvent event) {
-        RPG.player = new KnightPlayer(RPG.player.getName(), RPG.player.getLevel());
+        RPG.player = new KnightPlayer(RPG.player.getName(), RPG.player.getLevel(), RPG.player.getX_Location(), RPG.player.getY_Location(), RPG.player.getMapLocation());
         try {
             root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
