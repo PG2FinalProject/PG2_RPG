@@ -4,13 +4,15 @@ import javafx.scene.image.Image;
 
 public class ShieldPlayer extends NovicePlayer{
 
-    public ShieldPlayer(String name, int level) {
+    public ShieldPlayer(String name, int level, int XLocation, int YLocation, int Map) {
         super(name, level);
         setLevel();
         setHP(getMaxHP());
         setMP(getMaxMP());
         setExp(this.lastlvupExp);
         setImage();
+        setLocation(XLocation, YLocation);
+        setMapLocation(Map);
     }
     
     

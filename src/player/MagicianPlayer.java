@@ -4,13 +4,15 @@ import javafx.scene.image.Image;
 
 public class MagicianPlayer extends NovicePlayer{
 
-    public MagicianPlayer(String name, int level) {
+    public MagicianPlayer(String name, int level, int XLocation, int YLocation, int Map) {
         super(name, level);
         setLevel();
         setHP(getMaxHP());
         setMP(getMaxMP());
         setExp(this.lastlvupExp);
         setImage();
+        setLocation(XLocation, YLocation);
+        setMapLocation(Map);
     }
     
     public void setLevel() {

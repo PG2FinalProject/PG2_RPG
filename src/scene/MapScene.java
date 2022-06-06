@@ -2,6 +2,7 @@ package scene;
 
 import java.io.IOException;
 import javafx.animation.PathTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import Main.RPG;
 import moveMent.MapMovement;
+import player.NovicePlayer;
 
 public class MapScene
 {
@@ -52,11 +54,11 @@ public class MapScene
     @FXML
     private Pane OpeningPane, Map_Pane;
     @FXML
-    private Button BattleButton, START_B, WB, AB, SB, DB;
+    private Button BattleButton, START_B, WB, AB, SB, DB, Win_B;
     @FXML
     private ImageView Image_onPane;
     @FXML
-    private ImageView[][] MapImages = new ImageView[5][7];
+    private ImageView[][] MapImages = new ImageView[7][5];
 	/*MapImages = {{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 				{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 				{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
@@ -64,23 +66,35 @@ public class MapScene
 				{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 			}*/
 	@FXML
-    void BattleButton_click(MouseEvent event) throws IOException
+    void BattleButton_click(ActionEvent event) //throws IOException
     {
+		//BattleButton invisible
+		try{
+            //RPG.player = new NovicePlayer(namingTextField.getText(), 1);
+            try{
+                root = FXMLLoader.load(getClass().getResource("BattleScene.fxml"));
+                scene = new Scene(root);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+		//
 		BattleButton.setVisible(false);
 		BattleButton.setDisable(true);
-		//BattleButton invisible
-        root = FXMLLoader.load(getClass().getResource("BattleScene.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+		DontMove(0);
+		
     }
 	//call battle
 	private void callBattle() {
 		//BattleButten visible;
-		/*
 		BattleButton.setVisible(true);
-		BattleButton.setDisable(false);*/
+		BattleButton.setDisable(false);
+		BattleButton.toFront();
 	}
 	//SetMap(Initialize)
 	private void Map_Initial() {
@@ -88,25 +102,33 @@ public class MapScene
 		//1. Reset Player image
 		//2. Reset Player Location
 		//3. Reset Player MapLocation
-		RPG.player.setLocation(2, 2);
-		for(int i = 0; i < 5; i++) {
-			for(int j = 0; j < 7; j++) {
+		//RPG.player.setLocation(2, 2);
+		for(int i = 0; i < 7; i++) {
+			for(int j = 0; j < 5; j++) {
 				MapImages[i][j] = new ImageView();
 				MapImages[i][j].setPreserveRatio(true);
 				MapImages[i][j].setSmooth(true);
 				MapImages[i][j].relocate(-175+150*i+100, -225+150*j+75);
-				//MapImages[i][j].setTranslateX(225);
-				//MapImages[i][j].setTranslateY(125);
 				MapImages[i][j].setFitWidth(150);
 				MapImages[i][j].setVisible(true);
 				MapImages[i][j].setImage(move_ment.newMapFragment(i, j));
 				Map_Pane.getChildren().addAll(MapImages[i][j]);
-				//getChildren().add(MapImages[i][j];)
 			}
 		}
 		this.Player_initial();
 	}
-	
+	@FXML
+	void WinButton(ActionEvent event) {
+		try {
+            root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();   
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
 	//Set PlayerImage(Initialize)
 	private void Player_initial() {
 		PlayerImage.setVisible(true);
@@ -117,6 +139,9 @@ public class MapScene
 	@FXML
 	void keyPressed(KeyEvent key) {
 		System.out.println("Press!");
+		if(MapMovement.GetWin()) {
+			Win_B.setVisible(true);
+		}
 		int direction = 0;
 		if(opening) {
 			this.Map_Initial();
@@ -188,11 +213,14 @@ public class MapScene
 				break;
 			case 5://Change Map
 				RPG.player.setMapLocation(2);
+				RPG.player.setLocation(2, 2);
 				Map_Initial();
+				walking = !walking;
 				break;
 			case 6://Change Map
 				callBattle();
 				Map_Initial();
+				walking = !walking;
 				break;
 			default :
 				break;
@@ -217,11 +245,21 @@ public class MapScene
 	}
 	//the Animation to move Map image views
 	public void MoveMap(int direction) {//0:UP, 1:DOWN, 2:LEFT, 3:RIGHT
-		Path path = new Path();
-		
-		for(int i = 0; i < 5; i++) {
-			for(int j = 0; j < 7; j++) {
-				path.getElements().add(new MoveTo(-75+150*i, -150+150*j));
+		//Path path = new Path();
+		switch(direction) {
+		case 0:
+			RPG.player.setLocation(RPG.player.getX_Location(), RPG.player.getY_Location()-1); break;
+		case 1:
+			RPG.player.setLocation(RPG.player.getX_Location(), RPG.player.getY_Location()+1); break;
+		case 2:
+			RPG.player.setLocation(RPG.player.getX_Location()-1, RPG.player.getY_Location()); break;
+		case 3:
+			RPG.player.setLocation(RPG.player.getX_Location()+1, RPG.player.getY_Location()); break;
+		}
+		for(int i = 0; i < 7; i++) {
+			for(int j = 0; j < 5; j++) {
+				//path.getElements().add(new MoveTo(-175+150*i+100, -225+150*j+75));
+				/*
 				switch(direction) {
 				case 0:
 					path.getElements().add(new VLineTo(-150)); break;
@@ -231,15 +269,17 @@ public class MapScene
 					path.getElements().add(new HLineTo(-150));break;
 				case 3:
 					path.getElements().add(new HLineTo(150));break;
-				}
+				}*/
+				/*
 				PathTransition Pt = new PathTransition();
 				Pt.setNode(MapImages[i][j]);
 				Pt.setDuration(Duration.seconds(0.5));
 				Pt.setPath(path);
+				Pt.setAutoReverse(false);
 				Pt.setCycleCount(1);
 				final int fi = i, fj = j;
 				Pt.setOnFinished(e -> {
-					MapImages[fi][fj].setImage(move_ment.newMapFragment(fi, fj));
+					
 					switch(direction) {
 					case 0:
 						PlayerImage.setImage(RPG.player.getplayerImageStandByLeft());
@@ -255,10 +295,63 @@ public class MapScene
 						MapImages[fi][fj].xProperty().add(-150); break;
 					}
 					walking = false;
+					MapImages[fi][fj].relocate(-175+150*fi+100, -225+150*fj+75);
+					System.out.println("ReSort");
 				});
 				Pt.play();
+				*/
+				TranslateTransition tl = new TranslateTransition();
+				tl.setNode(MapImages[i][j]);
+				tl.setDuration(Duration.millis(500));
+				switch(direction) {
+				case 0:
+					PlayerImage.setImage(RPG.player.getplayerImageRunningByLeft());
+					tl.setByY(150); break;
+				case 1:
+					PlayerImage.setImage(RPG.player.getplayerImageRunningByRight());
+					tl.setByY(-150); break;
+				case 2:
+					PlayerImage.setImage(RPG.player.getplayerImageRunningByLeft());
+					tl.setByX(150); break;
+				case 3:
+					PlayerImage.setImage(RPG.player.getplayerImageRunningByRight());
+					tl.setByX(-150); break;
+				}
+				System.out.printf("i = "+ i+ "j = "+j+"\n");
+				final int fi= i, fj = j;
+				tl.setOnFinished(e -> {
+					TranslateTransition t2 = new TranslateTransition();
+					t2.setNode(MapImages[fi][fj]);
+					t2.setDuration(Duration.millis(1));
+					switch(direction) {
+					case 0:
+						PlayerImage.setImage(RPG.player.getplayerImageStandByLeft());
+						t2.setByY(-150); break;
+					case 1:
+						PlayerImage.setImage(RPG.player.getplayerImageStandByRight());
+						t2.setByY(150); break;
+					case 2:
+						PlayerImage.setImage(RPG.player.getplayerImageStandByLeft());
+						t2.setByX(-150); break;
+					case 3:
+						PlayerImage.setImage(RPG.player.getplayerImageStandByRight());
+						t2.setByX(150); break;
+					}
+					//System.out.printf("fi = "+ fi+ "fj = "+fj);
+					//MapImages[fi][fj].setLayoutX(-175+150*fi+100);
+					//MapImages[fi][fj].setLayoutY(-225+150*fj+75);
+					//MapImages[fi][fj].relocate(-175+150*fi+100, -225+150*fj+75);
+					t2.play();
+					MapImages[fi][fj].setImage(move_ment.newMapFragment(fi, fj));
+				});
+				tl.play();
+				walking = false;
+				DontMove(direction);
+				//MapImages[i][j].relocate(-175+150*i+100, -225+150*j+75);
+				//path.getElements().add(new MoveTo(-175+150*i+100, -225+150*j+75));
 			}
 		}
+		System.out.println("Location:"+RPG.player.getX_Location()+", "+RPG.player.getY_Location());
 	}
 
 }

@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import moveMent.MapMovement;
 import player.NovicePlayer;
 import javafx.scene.Node;
 
@@ -39,6 +40,7 @@ public class NamingScene {
         try{
             RPG.player = new NovicePlayer(namingTextField.getText(), 5);
             try{
+            	MapMovement.ReSetMap();
                 root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
                 scene = new Scene(root);
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -21,9 +21,9 @@ public class TransferScene {
 
     @FXML
     void KnightAction(ActionEvent event) throws IOException{
-        RPG.player = new KnightPlayer(RPG.player.getName(), RPG.player.getLevel());
+        RPG.player = new KnightPlayer(RPG.player.getName(), RPG.player.getLevel(), RPG.player.getX_Location(), RPG.player.getY_Location(), RPG.player.getMapLocation());
         try {
-            root = FXMLLoader.load(getClass().getResource("TransferScene.fxml"));
+            root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -34,9 +34,9 @@ public class TransferScene {
     }
     @FXML
     void MagicialAction(ActionEvent event) {
-        RPG.player = new KnightPlayer(RPG.player.getName(), RPG.player.getLevel());
+        RPG.player = new MagicianPlayer(RPG.player.getName(), RPG.player.getLevel(), RPG.player.getX_Location(), RPG.player.getY_Location(), RPG.player.getMapLocation());
         try {
-            root = FXMLLoader.load(getClass().getResource("TransferScene.fxml"));
+            root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -47,9 +47,9 @@ public class TransferScene {
     }
     @FXML
     void ShieldAction(ActionEvent event) {
-        RPG.player = new KnightPlayer(RPG.player.getName(), RPG.player.getLevel());
+        RPG.player = new ShieldPlayer(RPG.player.getName(), RPG.player.getLevel(), RPG.player.getX_Location(), RPG.player.getY_Location(), RPG.player.getMapLocation());
         try {
-            root = FXMLLoader.load(getClass().getResource("TransferScene.fxml"));
+            root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
