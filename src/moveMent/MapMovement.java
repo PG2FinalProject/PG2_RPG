@@ -46,15 +46,15 @@ public class MapMovement {
 		map = RPG.player.getMapLocation() == 1 ? MapArray_1 : MapArray_2;
 		switch(direction) {//0:UP, 1:DOWN, 2:LEFT, 3:RIGHT
 		case 0:
-			if(map[x][y+1] == 2) {
-				map[x][y+1] = 0;
-				return 2;
-			}return map[x][y+1];
-		case 1:
 			if(map[x][y-1] == 2) {
 				map[x][y-1] = 0;
 				return 2;
 			}return map[x][y-1];
+		case 1:
+			if(map[x][y+1] == 2) {
+				map[x][y+1] = 0;
+				return 2;
+			}return map[x][y+1];
 		case 2:
 			if(map[x-1][y] == 2) {
 				map[x-1][y] = 0;

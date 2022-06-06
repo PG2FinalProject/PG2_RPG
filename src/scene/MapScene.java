@@ -64,7 +64,7 @@ public class MapScene
 				{new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView(),new ImageView()},
 			}*/
 	@FXML
-    void BattleButton_click(MouseEvent event) throws IOException
+    void BattleButton_click(ActionEvent event) throws IOException
     {
 		BattleButton.setVisible(false);
 		BattleButton.setDisable(true);
@@ -78,9 +78,9 @@ public class MapScene
 	//call battle
 	private void callBattle() {
 		//BattleButten visible;
-		/*
 		BattleButton.setVisible(true);
-		BattleButton.setDisable(false);*/
+		BattleButton.setDisable(false);
+		BattleButton.toFront();
 	}
 	//SetMap(Initialize)
 	private void Map_Initial() {
@@ -218,7 +218,6 @@ public class MapScene
 	//the Animation to move Map image views
 	public void MoveMap(int direction) {//0:UP, 1:DOWN, 2:LEFT, 3:RIGHT
 		Path path = new Path();
-		
 		for(int i = 0; i < 5; i++) {
 			for(int j = 0; j < 7; j++) {
 				path.getElements().add(new MoveTo(-75+150*i, -150+150*j));
@@ -259,6 +258,17 @@ public class MapScene
 				Pt.play();
 			}
 		}
+		switch(direction) {
+		case 0:
+			RPG.player.setLocation(RPG.player.getX_Location(), RPG.player.getY_Location()-1); break;
+		case 1:
+			RPG.player.setLocation(RPG.player.getX_Location(), RPG.player.getY_Location()+1); break;
+		case 2:
+			RPG.player.setLocation(RPG.player.getX_Location()-1, RPG.player.getY_Location()); break;
+		case 3:
+			RPG.player.setLocation(RPG.player.getX_Location()+1, RPG.player.getY_Location()); break;
+		}
+		
 	}
 
 }
