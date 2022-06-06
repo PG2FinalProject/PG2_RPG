@@ -141,6 +141,8 @@ public class MapScene
 		System.out.println("Press!");
 		if(MapMovement.GetWin()) {
 			Win_B.setVisible(true);
+			Win_B.setDisable(false);
+			Win_B.toFront();
 		}
 		int direction = 0;
 		if(opening) {
@@ -317,7 +319,7 @@ public class MapScene
 					PlayerImage.setImage(RPG.player.getplayerImageRunningByRight());
 					tl.setByX(-150); break;
 				}
-				System.out.printf("i = "+ i+ "j = "+j+"\n");
+				
 				final int fi= i, fj = j;
 				tl.setOnFinished(e -> {
 					TranslateTransition t2 = new TranslateTransition();
@@ -342,7 +344,10 @@ public class MapScene
 					//MapImages[fi][fj].setLayoutY(-225+150*fj+75);
 					//MapImages[fi][fj].relocate(-175+150*fi+100, -225+150*fj+75);
 					t2.play();
-					MapImages[fi][fj].setImage(move_ment.newMapFragment(fi, fj));
+					if(fi <= 14 && fj <=14 && fi >=0 && fj >= 0)	{
+						System.out.printf("fi = "+ fi+ "fj = "+fj+"\n");
+							MapImages[fi][fj].setImage(move_ment.newMapFragment(fi, fj));
+						}
 				});
 				tl.play();
 				walking = false;

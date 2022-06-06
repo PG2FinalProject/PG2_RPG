@@ -1,9 +1,11 @@
 package moveMent;
 
 import Main.RPG;
+import item.Key;
 import javafx.scene.image.Image;
 
 public class MapMovement {
+	Key key = new Key(0);
 	static private int[][] MapArray_1 = {
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -67,10 +69,15 @@ public class MapMovement {
 				if(!ChestTriggered) {
 					ChestTriggered = true;
 					/*GET CHEST FUNCTION*/
+					key.setNum(1);
 				}
 			}else if (map[x][y-1] == 6) {
 				Win = true;
 				return 2;
+			}else if (map[x][y-1] == 5) {
+				if(key.getNum() == 1)
+					return 5;
+				else return 1;
 			}return map[x][y-1];
 		case 1:
 			if(map[x][y+1] == 2) {
@@ -83,10 +90,15 @@ public class MapMovement {
 				if(!ChestTriggered) {
 					ChestTriggered = true;
 					/*GET CHEST FUNCTION*/
+					key.setNum(1);
 				}
 			}else if (map[x][y+1] == 6) {
 				Win = true;
 				return 2;
+			}else if (map[x][y+1] == 5) {
+				if(key.getNum() == 1)
+					return 5;
+				else return 1;
 			}return map[x][y+1];
 		case 2:
 			if(map[x-1][y] == 2) {
@@ -99,10 +111,15 @@ public class MapMovement {
 				if(!ChestTriggered) {
 					ChestTriggered = true;
 					/*GET CHEST FUNCTION*/
+					key.setNum(1);
 				}
 			}else if (map[x-1][y] == 6) {
 				Win = true;
 				return 2;
+			}else if (map[x-1][y] == 5) {
+				if(key.getNum() == 1)
+					return 5;
+				else return 1;
 			}return map[x-1][y];
 		case 3:
 			if(map[x+1][y] == 2) {
@@ -115,10 +132,15 @@ public class MapMovement {
 				if(!ChestTriggered) {
 					ChestTriggered = true;
 					/*GET CHEST FUNCTION*/
+					key.setNum(1);
 				}
 			}else if (map[x+1][y] == 6) {
 				Win = true;
 				return 2;
+			}else if (map[x+1][y] == 5) {
+				if(key.getNum() == 1)
+					return 5;
+				else return 1;
 			}return map[x+1][y];
 		default:
 			return 9;
@@ -129,8 +151,11 @@ public class MapMovement {
 		//use i, j, Player Location to figure out what image should it be;
 		int ab_i = RPG.player.getX_Location() - 2 + i;
 		int ab_j = RPG.player.getY_Location() - 2 + j;
-		System.out.println("i = "+ab_i+", j = "+ab_j);
-		return wholeMap(ab_i, ab_j);
+		if(ab_i<=14 && ab_i >= 0 && ab_j <= 14 && ab_j >= 0) {
+			System.out.println("i = "+ab_i+", j = "+ab_j);
+			return wholeMap(ab_i, ab_j);
+		}
+		return new Image(getClass().getResourceAsStream("../mapElementsPicture/Wall-1.png"));
 	}
 	//
 	public Image wholeMap(int i, int j) {
