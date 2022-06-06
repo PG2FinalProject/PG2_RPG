@@ -564,7 +564,7 @@ public class BattleScene implements Initializable {
             }
             else{
                 try {
-                    root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("MapScene.fxml"));
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
@@ -609,7 +609,7 @@ public class BattleScene implements Initializable {
             itemImageViewArray[i].setVisible(true);
             itemLabelArray[i].setVisible(true);
             itemImageViewArray[i].setImage(RPG.player.getItem()[i].getImage());
-            itemLabelArray[i].setText(RPG.player.getItem()[i].getName() + " × " + RPG.player.getItem()[i].getNum());
+            itemLabelArray[i].setText(RPG.player.getItem()[i].getName() + " ** " + RPG.player.getItem()[i].getNum());
         }
     }
 

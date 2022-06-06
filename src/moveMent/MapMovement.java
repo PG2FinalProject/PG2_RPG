@@ -4,7 +4,7 @@ import Main.RPG;
 import javafx.scene.image.Image;
 
 public class MapMovement {
-	private int[][] MapArray_1 = {
+	static private int[][] MapArray_1 = {
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,1,0,0,0,1,1,1,1,1,1,1,1,1},
@@ -21,7 +21,7 @@ public class MapMovement {
 			{1,1,1,1,1,1,1,1,1,1,0,1,1,1},
 			{1,1,1,1,1,1,1,1,1,1,0,1,1,1}
 	};
-	private int[][] MapArray_2 = {
+	static private int[][] MapArray_2 = {
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,1,0,1,1,1,1,1,1,1,1,1,1,1},
@@ -38,6 +38,9 @@ public class MapMovement {
 			{1,1,1,1,1,1,1,1,1,1,0,1,1,1},
 			{1,1,1,1,1,1,1,1,1,1,0,1,1,1}
 	};
+	public static void ReSetMap() {
+		
+	}
 	//Using to return the correct images of Map & Player
 	public int Move(int direction) {//1: Don't Move, 0: Move, 5:Change Map, 2:Battle
 		int x = RPG.player.getX_Location();
@@ -47,22 +50,34 @@ public class MapMovement {
 		switch(direction) {//0:UP, 1:DOWN, 2:LEFT, 3:RIGHT
 		case 0:
 			if(map[x][y-1] == 2) {
-				map[x][y-1] = 0;
+				if(RPG.player.getMapLocation() == 1)
+					MapArray_1[x][y-1] = 0;
+				else 
+					MapArray_2[x][y-1] = 0;
 				return 2;
 			}return map[x][y-1];
 		case 1:
 			if(map[x][y+1] == 2) {
-				map[x][y+1] = 0;
+				if(RPG.player.getMapLocation() == 1)
+					MapArray_1[x][y+1] = 0;
+				else 
+					MapArray_2[x][y+1] = 0;
 				return 2;
 			}return map[x][y+1];
 		case 2:
 			if(map[x-1][y] == 2) {
-				map[x-1][y] = 0;
+				if(RPG.player.getMapLocation() == 1)
+					MapArray_1[x-1][y] = 0;
+				else 
+					MapArray_2[x-1][y] = 0;
 				return 2;
 			}return map[x-1][y];
 		case 3:
 			if(map[x+1][y] == 2) {
-				map[x+1][y] = 0;
+				if(RPG.player.getMapLocation() == 1)
+					MapArray_1[x+1][y] = 0;
+				else 
+					MapArray_2[x+1][y] = 0;
 				return 2;
 			}return map[x+1][y];
 		default:
@@ -92,7 +107,7 @@ public class MapMovement {
 		case 4:
 			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Floor_bf_door.png"));
 		case 5:
-			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Door.png"));
+			return new Image(getClass().getResourceAsStream("../mapElementsPicture/Door.gif"));
 		case 6:
 			return new Image(getClass().getResourceAsStream("../mapElementsPicture/BossBlock.png"));
 		default:

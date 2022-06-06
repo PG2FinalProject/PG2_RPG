@@ -20,12 +20,15 @@
                <image>
                   <Image url="@../mapElementsPicture/Welcome.png" />
                </image></ImageView>
-            <Button fx:id="START_B" layoutX="277.0" layoutY="258.0" mnemonicParsing="false" onKeyPressed="#keyPressed" onMouseClicked="#keyPressed" text="START" />
             <Button fx:id="WB" minWidth="53.0" mnemonicParsing="false" onKeyPressed="#keyPressed" prefHeight="51.0" prefWidth="53.0" text="W" visible="false" />
             <Button fx:id="SB" minWidth="53.0" mnemonicParsing="false" onKeyPressed="#keyPressed" prefHeight="51.0" prefWidth="53.0" text="S" visible="false" />
             <Button fx:id="AB" minWidth="53.0" mnemonicParsing="false" onKeyPressed="#keyPressed" prefHeight="51.0" prefWidth="53.0" text="A" visible="false" />
             <Button fx:id="DB" minWidth="53.0" mnemonicParsing="false" onKeyPressed="#keyPressed" prefHeight="51.0" prefWidth="53.0" text="D" visible="false" />
-            <Pane fx:id="Map_Pane" prefHeight="400.0" prefWidth="600.0" />
+            <Pane fx:id="Map_Pane" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="START_B" layoutX="264.0" layoutY="243.0" mnemonicParsing="false" onKeyPressed="#keyPressed" onMouseClicked="#keyPressed" text="PRESS W" />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>
